@@ -10,5 +10,6 @@
     },
     "autoload": {
         "psr-0": {"Clue": "src/"}
-    }
+    },
+    "bin": ["bin/graph-composer"]
 }
