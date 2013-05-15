@@ -9,17 +9,19 @@ class GraphComposer
 {
     private $layoutVertex = array(
         'fillcolor' => '#eeeeee',
-        'style' => 'filled',
-        'shape' => 'box'
+        'style' => 'filled, rounded',
+        'shape' => 'box',
+        'fontcolor' => '#314B5F'
     );
     
     private $layoutVertexRoot = array(
-        'fontcolor' => 'red'
+        'style' => 'filled, rounded, bold'
     );
     
     private $layoutEdge = array(
-        'fontcolor' => '#999999',
-        'fontsize' => 10
+        'fontcolor' => '#767676',
+        'fontsize' => 10,
+        'color' => '#1A2833'
     );
     
     private $layoutEdgeDev = array(
