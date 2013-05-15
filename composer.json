@@ -1,5 +1,9 @@
 {
     "name": "clue/graph-composer",
+    "description": "Dependency graph visualization for composer.json",
+    "keywords": ["dependency graph", "visualize dependencies", "visualize composer"],
+    "homepage": "https://github.com/clue/graph-composer",
+    "license": "MIT",
     "require": {
         "clue/graph": "0.5",
         "jms/composer-deps-analyzer": "dev-master"
