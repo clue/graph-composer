@@ -7,6 +7,21 @@ use Fhaculty\Graph\Graph;
 
 class GraphComposer
 {
+    private $layoutVertex = array(
+        'fillcolor' => '#eeeeee',
+        'style' => 'filled',
+        'shape' => 'box'
+    );
+    
+    private $layoutVertexRoot = array(
+        'fontcolor' => 'red'
+    );
+    
+    private $layoutEdge = array(
+        'fontcolor' => '#999999',
+        'fontsize' => 10
+    );
+    
     /**
      * 
      * @param string $dir
@@ -28,12 +43,7 @@ class GraphComposer
                 $label .= ': ' . $package->getVersion();
             }
             
-            $start->setLayout(array(
-                'label' => $label,
-                'fillcolor' => '#eeeeee',
-                'style' => 'filled',
-                'shape' => 'box'
-            ));
+            $start->setLayout(array('label' => $label) + $this->layoutVertex);
         
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
@@ -41,17 +51,11 @@ class GraphComposer
                 
                 $label = $requires->getVersionConstraint();
                 
-                $start->createEdgeTo($target)->setLayout(array(
-                    'label' => $label,
-                    'fontcolor' => '#999999',
-                    'fontsize' => 10
-                ));
+                $start->createEdgeTo($target)->setLayout(array('label' => $label) + $this->layoutEdge);
             }
         }
-        
-        $graph->getVertex($dependencyGraph->getRootPackage()->getName())->setLayout(array(
-            'fontcolor' => 'red'
-        ));
+
+        $graph->getVertex($dependencyGraph->getRootPackage()->getName())->setLayout($this->layoutVertexRoot);
         
         return $graph;
     }
