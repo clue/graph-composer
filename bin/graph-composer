@@ -7,4 +7,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dir = isset($argv[1]) ? $argv[1] : '.';
 
 $graph = new Clue\GraphComposer($dir);
-$graph->displayGraph();
+
+if (isset($argv[2])) {
+    $graph->exportGraph($argv[2]);
+} else {
+    $graph->displayGraph();
+}
