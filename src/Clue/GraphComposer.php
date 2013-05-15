@@ -22,8 +22,14 @@ class GraphComposer
         foreach ($dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
             $start = $graph->createVertex($name, true);
+            
+            $label = $name;
+            if ($package->getVersion() !== null) {
+                $label .= ': ' . $package->getVersion();
+            }
+            
             $start->setLayout(array(
-                'label' => $name . ': ' . $package->getVersion(),
+                'label' => $label,
                 'fillcolor' => '#eeeeee',
                 'style' => 'filled',
                 'shape' => 'box'
@@ -32,8 +38,11 @@ class GraphComposer
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
                 $target = $graph->createVertex($targetName, true);
+                
+                $label = $requires->getVersionConstraint();
+                
                 $start->createEdgeTo($target)->setLayout(array(
-                    'label' => $requires->getVersionConstraint(),
+                    'label' => $label,
                     'fontcolor' => '#999999',
                     'fontsize' => 10
                 ));
