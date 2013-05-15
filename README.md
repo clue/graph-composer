@@ -10,7 +10,7 @@ Graph visualization for your project's `composer.json` and its dependencies:
 Once clue/graph-composer is [installed](#install), you can simply invoke it via command line like this:
 
 ```
-$ php graph-composer.php ~/path/to/your/project
+$ ./bin/graph-composer ~/path/to/your/project [optional target image path.svg]
 ```
 
 ## Install
