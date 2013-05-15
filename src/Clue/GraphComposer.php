@@ -22,6 +22,10 @@ class GraphComposer
         'fontsize' => 10
     );
     
+    private $layoutEdgeDev = array(
+        'style' => 'dashed'
+    );
+    
     /**
      * 
      * @param string $dir
@@ -51,7 +55,11 @@ class GraphComposer
                 
                 $label = $requires->getVersionConstraint();
                 
-                $start->createEdgeTo($target)->setLayout(array('label' => $label) + $this->layoutEdge);
+                $edge = $start->createEdgeTo($target)->setLayout(array('label' => $label) + $this->layoutEdge);
+                
+                if ($requires->isDevDependency()) {
+                    $edge->setLayout($this->layoutEdgeDev);
+                }
             }
         }
 
