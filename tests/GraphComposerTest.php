@@ -8,8 +8,8 @@ class GraphTest extends PHPUnit_Framework_TestCase
     {
         $dir = __DIR__ . '/../';
         
-        $graphComposer = new Clue\GraphComposer();
-        $graph = $graphComposer->createGraph($dir);
+        $graphComposer = new Clue\GraphComposer($dir);
+        $graph = $graphComposer->createGraph();
         
         $this->assertInstanceOf('Fhaculty\Graph\Graph', $graph);
         $this->assertTrue($graph->getNumberOfVertices() > 0);

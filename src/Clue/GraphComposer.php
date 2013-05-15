@@ -28,19 +28,28 @@ class GraphComposer
         'style' => 'dashed'
     );
     
+    private $dependencyGraph;
+    
+    /**
+     * 
+     * @param string $dir
+     */
+    public function __construct($dir)
+    {
+        $analyzer = new \JMS\Composer\DependencyAnalyzer();
+        $this->dependencyGraph = $analyzer->analyze($dir);
+    }
+    
     /**
      * 
      * @param string $dir
      * @return \Fhaculty\Graph\Graph
      */
-    public function createGraph($dir)
+    public function createGraph()
     {
-        $analyzer = new \JMS\Composer\DependencyAnalyzer();
-        $dependencyGraph = $analyzer->analyze($dir);
-        
         $graph = new Graph();
         
-        foreach ($dependencyGraph->getPackages() as $package) {
+        foreach ($this->dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
             $start = $graph->createVertex($name, true);
             
@@ -65,14 +74,14 @@ class GraphComposer
             }
         }
 
-        $graph->getVertex($dependencyGraph->getRootPackage()->getName())->setLayout($this->layoutVertexRoot);
+        $graph->getVertex($this->dependencyGraph->getRootPackage()->getName())->setLayout($this->layoutVertexRoot);
         
         return $graph;
     }
         
-    public function displayGraph($dir)
+    public function displayGraph()
     {
-        $graph = $this->createGraph($dir);
+        $graph = $this->createGraph();
         
         $graphviz = new GraphViz($graph);
         $graphviz->setFormat('svg');

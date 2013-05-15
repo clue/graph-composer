@@ -6,5 +6,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // directory to scan
 $dir = isset($argv[1]) ? $argv[1] : '.';
 
-$graph = new Clue\GraphComposer();
-$graph->displayGraph($dir);
+$graph = new Clue\GraphComposer($dir);
+$graph->displayGraph();
