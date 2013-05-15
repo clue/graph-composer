@@ -3,5 +3,8 @@
     "require": {
         "clue/graph": "0.5",
         "jms/composer-deps-analyzer": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"Clue": "src/"}
     }
 }
