@@ -1,10 +1,9 @@
-# graph-composer
+# clue/graph-composer [![Build Status](https://travis-ci.org/clue/graph-composer.png?branch=master)](https://travis-ci.org/clue/graph-composer)
 
-Graph visualization for composer.json
+Graph visualization for your project's `composer.json` and its dependencies:
 
-[![Build Status](https://travis-ci.org/clue/graph-composer.png?branch=master)](https://travis-ci.org/clue/graph-composer)
 
-![example graph-composer dependency graph](http://s7.directupload.net/images/130515/bjvltqe3.png)
+![example dependency graph for clue/graph-composer](http://i.imgur.com/3DERCoA.png)
 
 
 ## License
