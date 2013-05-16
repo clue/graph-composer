@@ -90,29 +90,6 @@ class GraphComposer
         $graphviz->display();
     }
     
-    public function exportGraph($target)
-    {
-        $graph = $this->createGraph();
-        
-        if (is_dir($target)) {
-            $target = rtrim($target, '/') . '/graph-composer.svg';
-        }
-        
-        $filename = basename($target);
-        $format = $this->format;
-        $pos = strrpos($filename, '.');
-        if ($pos !== false && isset($filename[$pos + 1])) {
-            // extension found and not empty
-            $format = substr($filename, $pos + 1);
-        }
-        
-        $graphviz = new GraphViz($graph);
-        $graphviz->setFormat($format);
-        $temp = $graphviz->createImageFile();
-        
-        rename($temp, $target);
-    }
-    
     public function getImagePath()
     {
         $graph = $this->createGraph();

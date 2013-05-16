@@ -24,12 +24,25 @@ class Export extends Command
     {
         $graph = new GraphComposer($input->getArgument('dir'));
         
-        $output = $input->getArgument('output');
-        if ($output !== null) {
-            $graph->exportGraph($output);
-        } else {
-            $path = $graph->getImagePath();
+        $target = $input->getArgument('output');
+        if ($target !== null) {
+            if (is_dir($target)) {
+                $target = rtrim($target, '/') . '/graph-composer.svg';
+            }
             
+            $filename = basename($target);
+            $pos = strrpos($filename, '.');
+            if ($pos !== false && isset($filename[$pos + 1])) {
+                // extension found and not empty
+                $graph->setFormat(substr($filename, $pos + 1));
+            }
+        }
+        
+        $path = $graph->getImagePath();
+        
+        if ($target !== null) {
+            rename($path, $target);
+        } else {
             readfile($path);
         }
     }
