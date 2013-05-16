@@ -6,7 +6,8 @@
     "license": "MIT",
     "require": {
         "clue/graph": "0.5",
-        "jms/composer-deps-analyzer": "dev-master"
+        "jms/composer-deps-analyzer": "dev-master",
+        "symfony/console": "~2.1"
     },
     "autoload": {
         "psr-0": {"Clue": "src/"}
