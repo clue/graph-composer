@@ -110,4 +110,14 @@ class GraphComposer
         
         rename($temp, $target);
     }
+    
+    public function getImagePath()
+    {
+        $graph = $this->createGraph();
+        
+        $graphviz = new GraphViz($graph);
+        $graphviz->setFormat('svg');
+        
+        return $graphviz->createImageFile();
+    }
 }
