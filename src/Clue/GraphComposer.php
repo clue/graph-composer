@@ -30,6 +30,8 @@ class GraphComposer
     
     private $dependencyGraph;
     
+    private $format = 'svg';
+    
     /**
      * 
      * @param string $dir
@@ -84,7 +86,7 @@ class GraphComposer
         $graph = $this->createGraph();
         
         $graphviz = new GraphViz($graph);
-        $graphviz->setFormat('svg');
+        $graphviz->setFormat($this->format);
         $graphviz->display();
     }
     
@@ -97,7 +99,7 @@ class GraphComposer
         }
         
         $filename = basename($target);
-        $format = 'svg';
+        $format = $this->format;
         $pos = strrpos($filename, '.');
         if ($pos !== false && isset($filename[$pos + 1])) {
             // extension found and not empty
@@ -116,8 +118,14 @@ class GraphComposer
         $graph = $this->createGraph();
         
         $graphviz = new GraphViz($graph);
-        $graphviz->setFormat('svg');
+        $graphviz->setFormat($this->format);
         
         return $graphviz->createImageFile();
+    }
+    
+    public function setFormat($format)
+    {
+        $this->format = $format;
+        return $this;
     }
 }
