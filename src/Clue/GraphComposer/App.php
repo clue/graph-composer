@@ -10,6 +10,7 @@ class App extends BaseApplication
     {
         parent::__construct('graph-composer', '@git_tag@');
         
-        $this->add(new Command\Scan());
+        $this->add(new Command\Show());
+        $this->add(new Command\Export());
     }
 }

@@ -9,12 +9,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Clue\GraphComposer;
 
-class Scan extends Command
+class Export extends Command
 {
     protected function configure()
     {
-        $this->setName('scan')
-             ->setDescription('Scans the given directory and generates a graph image')
+        $this->setName('export')
+             ->setDescription('Export dependency graph image for given project directory')
              ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan', '.')
              ->addArgument('output', InputArgument::OPTIONAL, 'Path to output image file')
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
@@ -28,7 +28,9 @@ class Scan extends Command
         if ($output !== null) {
             $graph->exportGraph($output);
         } else {
-            $graph->displayGraph();
+            $path = $graph->getImagePath();
+            
+            readfile($path);
         }
     }
 }
