@@ -15,20 +15,14 @@ class Scan extends Command
     {
         $this->setName('scan')
              ->setDescription('Scans the given directory and generates a graph image')
-             ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan')
+             ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan', '.')
              ->addArgument('output', InputArgument::OPTIONAL, 'Path to output image file')
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // directory to scan
-        $dir = $input->getArgument('dir');
-        if ($dir === null) {
-            $dir = '.';
-        }
-        
-        $graph = new GraphComposer($dir);
+        $graph = new GraphComposer($input->getArgument('dir'));
         
         $output = $input->getArgument('output');
         if ($output !== null) {
