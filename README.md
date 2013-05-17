@@ -9,7 +9,7 @@ Graph visualization for your project's `composer.json` and its dependencies:
 
 Once clue/graph-composer is [installed](#install), you can simply invoke it via command line like this:
 
-```
+```bash
 $ php graph-composer.phar show ~/path/to/your/project
 ```
 
@@ -22,7 +22,7 @@ You can grab a copy of clue/graph-composer in either of the following ways.
 You can simply download a pre-compiled and ready-to-use version as a Phar
 to any directory:
 
-```
+```bash
 $ wget http://www.lueck.tv/graph-composer/graph-composer.phar
 ```
 
@@ -30,13 +30,14 @@ $ wget http://www.lueck.tv/graph-composer/graph-composer.phar
 > If you prefer a global (system-wide) installation without having to type the `.phar` extension
 each time, you may simply invoke:
 > 
-> ```
-> $ sudo chmod 0755 graph-composer.phar && sudo mv graph-composer.phar /usr/local/bin/graph-composer`
+> ```bash
+> $ sudo chmod 0755 graph-composer.phar
+> $ sudo mv graph-composer.phar /usr/local/bin/graph-composer`
 > ```
 >
 > You can verify everything works by running:
 > 
-> ```
+> ```bash
 > $ graph-composer --version
 > ```
 
@@ -50,7 +51,7 @@ There's no separate `update` procedure, simply overwrite the existing phar with 
 
 This project requires PHP 5.3+, Composer and GraphViz:
 
-```
+```bash
 $ sudo apt-get install php5-cli graphviz
 $ git clone https://github.com/clue/graph-composer.git
 $ cd graph-composer
@@ -59,7 +60,7 @@ $ php composer.phar install
 ```
 
 #### Updating manually
-```
+```bash
 $ git pull
 $ php composer.phar update
 ```
