@@ -3,7 +3,7 @@
 Graph visualization for your project's `composer.json` and its dependencies:
 
 
-![example dependency graph for clue/graph-composer](http://i.imgur.com/3DERCoA.png)
+![example dependency graph for clue/graph-composer](http://www.lueck.tv/graph-composer/graph-composer.svg)
 
 ## Usage
 
