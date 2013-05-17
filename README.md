@@ -23,7 +23,7 @@ You can simply download a pre-compiled and ready-to-use version as a Phar
 to any directory:
 
 ```
-$ wget https://path-has-yet-to-be-anounced.com/graph-composer.phar
+$ wget http://www.lueck.tv/graph-composer/graph-composer.phar
 ```
 
 
