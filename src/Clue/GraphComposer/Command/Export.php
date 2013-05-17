@@ -17,7 +17,10 @@ class Export extends Command
              ->setDescription('Export dependency graph image for given project directory')
              ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan', '.')
              ->addArgument('output', InputArgument::OPTIONAL, 'Path to output image file')
-             ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)', 'svg')
+             
+             // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
+             ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)'/*, 'svg'*/)
+             
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
     
@@ -39,7 +42,10 @@ class Export extends Command
             }
         }
         
-        $graph->setFormat($input->getOption('format'));
+        $format = $input->getOption('format');
+        if ($format !== null) {
+            $graph->setFormat($format);
+        }
         
         $path = $graph->getImagePath();
         
