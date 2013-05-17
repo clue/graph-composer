@@ -3,7 +3,7 @@
 Graph visualization for your project's `composer.json` and its dependencies:
 
 
-![example dependency graph for clue/graph-composer](http://i.imgur.com/3DERCoA.png)
+![example dependency graph for clue/graph-composer](http://www.lueck.tv/graph-composer/graph-composer.svg)
 
 ## Usage
 
@@ -31,7 +31,7 @@ $ wget http://www.lueck.tv/graph-composer/graph-composer.phar
 each time, you may simply invoke:
 > 
 > ```bash
-> $ sudo chmod 0755 graph-composer.phar
+> $ chmod 0755 graph-composer.phar
 > $ sudo mv graph-composer.phar /usr/local/bin/graph-composer`
 > ```
 >
