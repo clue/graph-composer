@@ -4,7 +4,7 @@ This file is a manually maintained list of changes for each release. Feel free
 to add your changes here when sending pull requests. Also send corrections if
 you spot any mistakes.
 
-## 0.1.0 (2013-05-16)
+## 0.1.0 (2013-05-17)
 
 * BC break: Whole new command line interface
 * Feature: Proper command line arguments and help
