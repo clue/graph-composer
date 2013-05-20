@@ -12,5 +12,10 @@
     "autoload": {
         "psr-0": {"Clue": "src/"}
     },
-    "bin": ["bin/graph-composer"]
+    "bin": ["bin/graph-composer"],
+    "extra": {
+        "phar": {
+            "bundler": "composer"
+        }
+    }
 }
