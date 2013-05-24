@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+(@include __DIR__ . '/../vendor/autoload.php') OR fwrite(STDERR, 'ERROR: Composer not properly set up! Run "composer install" or see README.md for more details' . PHP_EOL) AND exit(1);
 
 $app = new Clue\GraphComposer\App();
 $app->run();
