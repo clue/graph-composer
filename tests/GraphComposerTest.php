@@ -7,11 +7,11 @@ class GraphTest extends PHPUnit_Framework_TestCase
     public function testCreateGraph()
     {
         $dir = __DIR__ . '/../';
-        
+
         $graphComposer = new Clue\GraphComposer($dir);
         $graph = $graphComposer->createGraph();
-        
+
         $this->assertInstanceOf('Fhaculty\Graph\Graph', $graph);
-        $this->assertTrue($graph->getNumberOfVertices() > 0);
+        $this->assertTrue(count($graph->getVertices()) > 0);
     }
 }
