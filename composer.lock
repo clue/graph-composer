@@ -1,0 +1,151 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "32566d7f266d4c34107cee5213157c78",
+    "packages": [
+        {
+            "name": "clue/graph",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/graph.git",
+                "reference": "v0.5.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/graph/zipball/v0.5.0",
+                "reference": "v0.5.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fhaculty": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A mathematical graph/network library written in PHP",
+            "homepage": "http://github.com/clue/graph",
+            "keywords": [
+                "dijkstra",
+                "edge",
+                "graph",
+                "kruskal",
+                "mathematical",
+                "minimum spanning tree",
+                "moore-bellman-ford",
+                "network",
+                "prim",
+                "shortest path",
+                "vertex"
+            ],
+            "time": "2013-05-07 14:17:48"
+        },
+        {
+            "name": "jms/composer-deps-analyzer",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/composer-deps-analyzer.git",
+                "reference": "912227ebdca09ca8bd67509645ac6318a136aa46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/composer-deps-analyzer/zipball/912227ebdca09ca8bd67509645ac6318a136aa46",
+                "reference": "912227ebdca09ca8bd67509645ac6318a136aa46",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "dev-master",
+                "symfony/filesystem": "2.1.*",
+                "symfony/process": "2.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JMS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "description": "Builds a Dependency Graph from a composer.json file",
+            "time": "2013-05-15 18:04:27"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.2.1",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "v2.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.2.1",
+                "reference": "v2.2.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-03-19 20:48:08"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
