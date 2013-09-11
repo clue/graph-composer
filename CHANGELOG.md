@@ -4,6 +4,11 @@ This file is a manually maintained list of changes for each release. Feel free
 to add your changes here when sending pull requests. Also send corrections if
 you spot any mistakes.
 
+## 0.1.1 (2013-09-11)
+
+* Update jms/composer-deps-analyzer to v0.1.0 and clue/graph to v0.7.0
+* Fix: Opening graph images now also works on Mac OS X
+
 ## 0.1.0 (2013-05-17)
 
 * BC break: Whole new command line interface
