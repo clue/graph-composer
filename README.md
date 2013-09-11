@@ -59,10 +59,19 @@ $ curl -s https://getcomposer.org/installer | php
 $ php composer.phar install
 ```
 
+> If you want to build the above mentioned `graph-composer.phar` yourself, you have
+to install [clue/phar-composer](https://github.com/clue/phar-composer#install)
+and can simply invoke:
+>
+> ```bash
+> $ php phar-composer.phar build ~/workspace/graph-composer
+> ```
+
 #### Updating manually
+
 ```bash
 $ git pull
-$ php composer.phar update
+$ php composer.phar install
 ```
 
 ## License
