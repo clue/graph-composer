@@ -3,24 +3,27 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "32566d7f266d4c34107cee5213157c78",
+    "hash": "f590e0cb22eaa5592e69ce65d07c2c21",
     "packages": [
         {
             "name": "clue/graph",
-            "version": "v0.5.0",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/graph.git",
-                "reference": "v0.5.0"
+                "reference": "d0d548a21b09099a266eacba8e4098aeae6409f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/graph/zipball/v0.5.0",
-                "reference": "v0.5.0",
+                "url": "https://api.github.com/repos/clue/graph/zipball/d0d548a21b09099a266eacba8e4098aeae6409f8",
+                "reference": "d0d548a21b09099a266eacba8e4098aeae6409f8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "autoload": {
@@ -33,11 +36,12 @@
                 "MIT"
             ],
             "description": "A mathematical graph/network library written in PHP",
-            "homepage": "http://github.com/clue/graph",
+            "homepage": "https://github.com/clue/graph",
             "keywords": [
                 "dijkstra",
                 "edge",
                 "graph",
+                "graphviz",
                 "kruskal",
                 "mathematical",
                 "minimum spanning tree",
@@ -47,7 +51,7 @@
                 "shortest path",
                 "vertex"
             ],
-            "time": "2013-05-07 14:17:48"
+            "time": "2013-09-11 22:52:40"
         },
         {
             "name": "jms/composer-deps-analyzer",

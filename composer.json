@@ -5,7 +5,7 @@
     "homepage": "https://github.com/clue/graph-composer",
     "license": "MIT",
     "require": {
-        "clue/graph": "0.5",
+        "clue/graph": "0.7.*",
         "jms/composer-deps-analyzer": "0.1.*",
         "symfony/console": "~2.1"
     },
