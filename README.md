@@ -26,6 +26,16 @@ to any directory:
 $ wget http://www.lueck.tv/graph-composer/graph-composer.phar
 ```
 
+Additionally, you'll have to install GraphViz (`dot` executable).
+Users of Debian/Ubuntu-based distributions may simply invoke:
+
+```bash
+$ sudo apt-get install graphviz
+```
+
+Windows users have to [download GraphViZ for Windows](http://www.graphviz.org/Download_windows.php) and remaining
+users should install from [GraphViz homepage](http://www.graphviz.org/Download.php).
+
 
 > If you prefer a global (system-wide) installation without having to type the `.phar` extension
 each time, you may simply invoke:
