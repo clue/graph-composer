@@ -7,11 +7,45 @@ Graph visualization for your project's `composer.json` and its dependencies:
 
 ## Usage
 
-Once clue/graph-composer is [installed](#install), you can simply invoke it via command line like this:
+Once clue/graph-composer is [installed](#install), you can use it via command line like this.
+
+### graph-composer show
+
+The `show` command creates a dependency graph for the given project path and opens
+the default desktop image viewer for you:
 
 ```bash
 $ php graph-composer.phar show ~/path/to/your/project
 ```
+
+*   It accepts an optional argument which is the path to your project directory or composer.json file
+    (defaults to checking the current directory for a composer.json file).
+
+*   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
+    the image type (defaults to `svg`).
+
+### graph-composer export
+
+The `export` command works very much like the `show` command, but instead of opening your
+default image viewer, it will write the resulting graph into an image file:
+
+```bash
+$ php graph-composer.phar export ~/path/to/your/project
+```
+
+*   It accepts an optional argument which is the path to your project directory or composer.json file
+    (defaults to checking the current directory for a composer.json file).
+
+*   It accepts an additional optional argument which is the path to write the resulting image to.
+    If this argument is not given, it defaults to writing to *projectname*.svg. Its file extension
+    also sets the image format (unless you also explicitly pass the `--format` option). Example call:
+
+    ```bash
+    $ php graph-composer.phar export ~/path/to/your/project export.png
+    ```
+    
+*   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
+    the image type (defaults to `svg`).
 
 ## Install
 
