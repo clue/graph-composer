@@ -4,6 +4,11 @@ This file is a manually maintained list of changes for each release. Feel free
 to add your changes here when sending pull requests. Also send corrections if
 you spot any mistakes.
 
+## 0.2.0 (2014-03-xx)
+
+* Feature: Support installation via composer
+  ([#12](https://github.com/clue/graph-composer/issues/12) @elkuku)
+
 ## 0.1.1 (2013-09-11)
 
 * Update jms/composer-deps-analyzer to v0.1.0 and clue/graph to v0.7.0

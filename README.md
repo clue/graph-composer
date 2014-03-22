@@ -118,6 +118,29 @@ $ git pull
 $ php composer.phar install
 ```
 
+### Installation using Composer
+
+Alternatively, you can also install graph-composer as part of your development dependencies.
+You will likely want to use the `require-dev` section to exclude graph-composer in your production environment.
+
+This method also requires PHP 5.3+, GraphViz and, of course, Composer.
+
+You can either modify your `composer.json` manually or run the following command to include the latest tagged release:
+
+```bash
+$ composer require --dev clue/graph-composer:*
+```
+
+Now you should be able to invoke the following command in your project root:
+
+```bash
+$ ./vendor/bin/graph-composer show
+```
+
+#### Updating manually
+
+Just run `composer update` if you use the `dev-master` version, otherwise switch to another [released version](https://github.com/clue/graph-composer/releases).
+
 ## License
 
 MIT
