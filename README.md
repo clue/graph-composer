@@ -120,32 +120,21 @@ $ php composer.phar install
 
 ### Installation using Composer
 
+Alternatively, you can also install graph-composer as part of your development dependencies.
+You will likely want to use the `require-dev` section to exclude graph-composer in your production environment.
+
 This method also requires PHP 5.3+, GraphViz and, of course, Composer.
 
-You may use the `require-dev` section to exclude graph-composer in your production environment.
-By using the `dev-master` version you will get the latest (unreleased) version from the git repository, otherwise use a specific [released version](https://github.com/clue/graph-composer/releases).
+You can either modify your `composer.json` manually or run the following command to include the latest tagged release:
 
-```
-"require-dev": {
-    "clue/graph-composer": "dev-master"
-}
+```bash
+$ composer require --dev clue/graph-composer:*
 ```
 
-#### Usage
+Now you should be able to invoke the following command in your project root:
 
-Execute the "binary" in `/vendor/bin/graph-composer`.
-
-E.g. in you ApacheAnt script:
-
-```xml
-<target name="graph-composer"
-	description="Generate a graphical representation of composer dependencies">
-	<exec executable="${basedir}/vendor/bin/graph-composer">
-		<arg value="export" />
-		<arg value="." />
-		<arg value="${basedir}/build/documentation/dependencies.png" />
-	</exec>
-</target>
+```bash
+$ ./vendor/bin/graph-composer show
 ```
 
 #### Updating manually
