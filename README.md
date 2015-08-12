@@ -24,6 +24,8 @@ $ php graph-composer.phar show ~/path/to/your/project
 *   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
     the image type (defaults to `svg`).
 
+*   By default, all dependecies is show. If you only want to see the production dependencies you can add the `--no-dev` option.
+
 ### graph-composer export
 
 The `export` command works very much like the `show` command, but instead of opening your
@@ -43,9 +45,11 @@ $ php graph-composer.phar export ~/path/to/your/project
     ```bash
     $ php graph-composer.phar export ~/path/to/your/project export.png
     ```
-    
+
 *   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
     the image type (defaults to `svg`).
+
+*   By default, all dependecies is show. If you only want to see the production dependencies you can add the `--no-dev` option.
 
 ## Install
 
@@ -73,14 +77,14 @@ users should install from [GraphViz homepage](http://www.graphviz.org/Download.p
 
 > If you prefer a global (system-wide) installation without having to type the `.phar` extension
 each time, you may simply invoke:
-> 
+>
 > ```bash
 > $ chmod 0755 graph-composer.phar
 > $ sudo mv graph-composer.phar /usr/local/bin/graph-composer`
 > ```
 >
 > You can verify everything works by running:
-> 
+>
 > ```bash
 > $ graph-composer --version
 > ```
