@@ -32,16 +32,24 @@ class GraphComposer
 
     private $dependencyGraph;
 
-    private $format = 'svg';
+    /**
+     * @var GraphViz
+     */
+    private $graphviz;
 
     /**
      *
      * @param string $dir
+     * @param GraphViz|null $graphviz
      */
-    public function __construct($dir)
+    public function __construct($dir, GraphViz $graphviz = null)
     {
+        if ($graphviz === null) {
+            $graphviz = new GraphViz();
+        }
         $analyzer = new \JMS\Composer\DependencyAnalyzer();
         $this->dependencyGraph = $analyzer->analyze($dir);
+        $this->graphviz = $graphviz;
     }
 
     /**
@@ -97,24 +105,20 @@ class GraphComposer
     {
         $graph = $this->createGraph();
 
-        $graphviz = new GraphViz();
-        $graphviz->setFormat($this->format);
-        $graphviz->display($graph);
+        $this->graphviz->display($graph);
     }
 
     public function getImagePath()
     {
         $graph = $this->createGraph();
 
-        $graphviz = new GraphViz();
-        $graphviz->setFormat($this->format);
-
-        return $graphviz->createImageFile($graph);
+        return $this->graphviz->createImageFile($graph);
     }
 
     public function setFormat($format)
     {
-        $this->format = $format;
+        $this->graphviz->setFormat($format);
+
         return $this;
     }
 }
