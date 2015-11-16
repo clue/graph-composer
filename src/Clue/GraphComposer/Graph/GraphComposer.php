@@ -1,6 +1,6 @@
 <?php
 
-namespace Clue;
+namespace Clue\GraphComposer\Graph;
 
 use Fhaculty\Graph\Graph;
 use Fhaculty\Graph\Attribute\AttributeAware;
