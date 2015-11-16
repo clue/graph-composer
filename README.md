@@ -90,6 +90,43 @@ each time, you may simply invoke:
 There's no separate `update` procedure, simply download the latest release again
 and overwrite the existing phar.
 
+### Installation using Composer
+
+Alternatively, you can also install graph-composer as part of your development dependencies.
+You will likely want to use the `require-dev` section to exclude graph-composer in your production environment.
+
+This method also requires PHP 5.3+, GraphViz and, of course, Composer.
+
+You can either modify your `composer.json` manually or run the following command to include the latest tagged release:
+
+```bash
+$ composer require --dev clue/graph-composer
+```
+
+Now you should be able to invoke the following command in your project root:
+
+```bash
+$ ./vendor/bin/graph-composer show
+```
+
+Alternatively, you can install this globally for your user by running:
+
+```bash
+$ composer global require clue/graph-composer
+```
+
+Now, assuming you have `~/.composer/vendor/bin` in your path, you can invoke the following command:
+
+```bash
+$ graph-composer show ~/path/to/your/project
+```
+
+#### Updating dependency
+
+Just run `composer update clue/graph-composer` to update to the latest release.
+
+If you installed it globally via composer you can run `composer global update clue/graph-composer` instead.
+
 ### Manual Installation from Source
 
 This project requires PHP 5.3+, Composer and GraphViz:
@@ -116,43 +153,6 @@ and can simply invoke:
 $ git pull
 $ php composer.phar install
 ```
-
-### Installation using Composer
-
-Alternatively, you can also install graph-composer as part of your development dependencies.
-You will likely want to use the `require-dev` section to exclude graph-composer in your production environment.
-
-This method also requires PHP 5.3+, GraphViz and, of course, Composer.
-
-You can either modify your `composer.json` manually or run the following command to include the latest tagged release:
-
-```bash
-$ composer require --dev clue/graph-composer:*
-```
-
-Now you should be able to invoke the following command in your project root:
-
-```bash
-$ ./vendor/bin/graph-composer show
-```
-
-Alternatively, you can install this globally for your user by running:
-
-```bash
-$ composer global require clue/graph-composer:*
-```
-
-Now, assuming you have `~/.composer/vendor/bin` in your path, you can invoke the following command:
-
-```bash
-$ graph-composer show ~/path/to/your/project
-```
-
-#### Updating manually
-
-Just run `composer update` if you use the `dev-master` version, otherwise switch to another [released version](https://github.com/clue/graph-composer/releases).
-
-If you installed it globally via composer you can run `composer global update` instead.
 
 ## License
 
