@@ -137,9 +137,23 @@ Now you should be able to invoke the following command in your project root:
 $ ./vendor/bin/graph-composer show
 ```
 
+Alternatively, you can install this globally for your user by running:
+
+```bash
+$ composer global require clue/graph-composer:*
+```
+
+Now, assuming you have `~/.composer/vendor/bin` in your path, you can invoke the following command:
+
+```bash
+$ graph-composer show ~/path/to/your/project
+```
+
 #### Updating manually
 
 Just run `composer update` if you use the `dev-master` version, otherwise switch to another [released version](https://github.com/clue/graph-composer/releases).
+
+If you installed it globally via composer you can run `composer global update` instead.
 
 ## License
 
