@@ -54,11 +54,11 @@ You can grab a copy of clue/graph-composer in either of the following ways.
 ### As a phar (recommended)
 
 You can simply download a pre-compiled and ready-to-use version as a Phar
-to any directory:
+to any directory.
+Simply download the latest `graph-composer.phar` file from our
+[releases page](https://github.com/clue/graph-composer/releases):
 
-```bash
-$ wget http://www.lueck.tv/graph-composer/graph-composer.phar
-```
+[Latest release](https://github.com/clue/graph-composer/releases/latest)
 
 Additionally, you'll have to install GraphViz (`dot` executable).
 Users of Debian/Ubuntu-based distributions may simply invoke:
@@ -87,9 +87,8 @@ each time, you may simply invoke:
 
 #### Updating phar
 
-There's no separate `update` procedure, simply overwrite the existing phar with the new version downloaded.
-
-> Note: [Ticket #1](https://github.com/clue/graph-composer/issues/1) will introduce a `self-update` command eventually.
+There's no separate `update` procedure, simply download the latest release again
+and overwrite the existing phar.
 
 ### Manual Installation from Source
 
