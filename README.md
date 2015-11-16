@@ -127,6 +127,10 @@ Now, assuming you have `~/.composer/vendor/bin` in your path, you can invoke the
 $ graph-composer show ~/path/to/your/project
 ```
 
+> Note: You should only invoke and rely on the main graph-composer bin file.
+Installing this project as a non-dev dependency in order to use its
+source code as a library is *not supported*.
+
 #### Updating dependency
 
 Just run `composer update clue/graph-composer` to update to the latest release.
