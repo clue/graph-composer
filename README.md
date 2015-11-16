@@ -70,6 +70,12 @@ $ sudo apt-get install graphviz
 Windows users have to [download GraphViZ for Windows](http://www.graphviz.org/Download_windows.php) and remaining
 users should install from [GraphViz homepage](http://www.graphviz.org/Download.php).
 
+That's it already. You can now verify everything works by running this:
+
+```bash
+$ cd ~/Downloads
+$ php graph-composer.phar --version
+```
 
 > If you prefer a global (system-wide) installation without having to type the `.phar` extension
 each time, you may simply invoke:
@@ -137,6 +143,12 @@ $ git clone https://github.com/clue/graph-composer.git
 $ cd graph-composer
 $ curl -s https://getcomposer.org/installer | php
 $ php composer.phar install
+```
+
+You can now verify everything works by running graph-composer like this:
+
+```bash
+$ php bin/graph-composer show
 ```
 
 > If you want to build the above mentioned `graph-composer.phar` yourself, you have
