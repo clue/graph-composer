@@ -1,13 +1,19 @@
-# CHANGELOG
+# Changelog
 
-This file is a manually maintained list of changes for each release. Feel free
-to add your changes here when sending pull requests. Also send corrections if
-you spot any mistakes.
+## 1.0.0 (2015-11-17)
 
-## 0.2.0 (2014-03-xx)
+*   First stable release, now following SemVer.
 
-* Feature: Support installation via composer
-  ([#12](https://github.com/clue/graph-composer/issues/12) @elkuku)
+*   Feature: Can now be installed as a `require-dev` Composer dependency and
+    supports running as `./vendor/bin/graph-composer`.
+    (#12 by @elkuku)
+    
+*   Fix: Update dependencies in order to improve error reporting and
+    MS Windows support.
+    (#23 by @clue)
+
+*   Updated documentation, test suite and project structure.
+    (#18, #16 by @nubs and #24, #25, #26, #27 by @clue)
 
 ## 0.1.1 (2013-09-11)
 
