@@ -11,9 +11,9 @@
         "graphp/graphviz": "~0.2.0"
     },
     "autoload": {
-        "psr-0": {"Clue": "src/"}
+        "psr-0": { "Clue\\GraphComposer": "src/" }
     },
-    "bin": ["bin/graph-composer"],
+    "bin": [ "bin/graph-composer" ],
     "extra": {
         "phar": {
             "bundler": "composer"

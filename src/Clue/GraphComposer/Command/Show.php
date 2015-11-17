@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Clue\GraphComposer;
+use Clue\GraphComposer\Graph\GraphComposer;
 
 class Show extends Command
 {
@@ -19,7 +19,7 @@ class Show extends Command
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)', 'svg')
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
-    
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $graph = new GraphComposer($input->getArgument('dir'));
