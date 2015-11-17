@@ -27,7 +27,7 @@ $ php graph-composer.phar show ~/path/to/your/project
 ### graph-composer export
 
 The `export` command works very much like the `show` command, but instead of opening your
-default image viewer, it will write the resulting graph into an image file:
+default image viewer, it will write the resulting graph to STDOUT or into an image file:
 
 ```bash
 $ php graph-composer.phar export ~/path/to/your/project
@@ -37,13 +37,20 @@ $ php graph-composer.phar export ~/path/to/your/project
     (defaults to checking the current directory for a composer.json file).
 
 *   It accepts an additional optional argument which is the path to write the resulting image to.
-    If this argument is not given, it defaults to writing to *projectname*.svg. Its file extension
+    Its file extension
     also sets the image format (unless you also explicitly pass the `--format` option). Example call:
 
     ```bash
     $ php graph-composer.phar export ~/path/to/your/project export.png
     ```
-    
+
+    If this argument is not given, it defaults to writing to STDOUT, which may
+    be useful for scripting purposes:
+
+    ```bash
+    $ php graph-composer.phar export ~/path/to/your/project | base64
+    ```
+
 *   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
     the image type (defaults to `svg`).
 

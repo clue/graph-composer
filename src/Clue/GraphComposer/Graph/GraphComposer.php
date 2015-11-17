@@ -46,6 +46,7 @@ class GraphComposer
     {
         if ($graphviz === null) {
             $graphviz = new GraphViz();
+            $graphviz->setFormat('svg');
         }
         $analyzer = new \JMS\Composer\DependencyAnalyzer();
         $this->dependencyGraph = $analyzer->analyze($dir);
