@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use Clue\GraphComposer\Graph\GraphComposer;
 
 class GraphTest extends PHPUnit_Framework_TestCase
