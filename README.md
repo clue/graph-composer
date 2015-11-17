@@ -5,6 +5,20 @@ Graph visualization for your project's `composer.json` and its dependencies:
 
 ![example dependency graph for clue/graph-composer](http://www.lueck.tv/graph-composer/graph-composer.png)
 
+**Table of contents**
+
+* [Usage](#usage)
+  * [graph-composer show](#graph-composer-show)
+  * [graph-composer export](#graph-composer-export)
+* [Install](#install)
+  * [As a phar (recommended)](#as-a-phar-recommended)
+    * [Updating phar](#updating-phar)
+  * [Installation using Composer](#installation-using-composer)
+    * [Updating dependency](#updating-dependency)
+  * [Manual Installation from Source](#manual-installation-from-source)
+    * [Updating manually](#updating-manually)
+* [License](#license)
+
 ## Usage
 
 Once clue/graph-composer is [installed](#install), you can use it via command line like this.
