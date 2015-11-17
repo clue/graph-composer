@@ -2,8 +2,7 @@
 
 Graph visualization for your project's `composer.json` and its dependencies:
 
-
-![example dependency graph for clue/graph-composer](http://www.lueck.tv/graph-composer/graph-composer.png)
+![dependency graph for graph-composer](https://cloud.githubusercontent.com/assets/776829/11199047/46dd4dd2-8cca-11e5-845f-cbe485764f56.png)
 
 **Table of contents**
 
