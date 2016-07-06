@@ -102,7 +102,7 @@ each time, you may simply invoke:
 > 
 > ```bash
 > $ chmod 0755 graph-composer.phar
-> $ sudo mv graph-composer.phar /usr/local/bin/graph-composer`
+> $ sudo mv graph-composer.phar /usr/local/bin/graph-composer
 > ```
 >
 > You can verify everything works by running:
