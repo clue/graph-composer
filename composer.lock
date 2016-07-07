@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6067ff0cd36da9a058560a3657f98918",
-    "content-hash": "aed5f261fd5bfc20be75ec15a552ca9f",
+    "hash": "3bedbf455f54168900e467a64bbe2b86",
+    "content-hash": "f21d893d503577676cbecd6dbff311d9",
     "packages": [
         {
             "name": "clue/graph",
@@ -181,26 +181,37 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.2.1",
+            "version": "v2.6.13",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d146fc32a9cf13bc479820e515048298a34cd432"
+                "reference": "0e5e18ae09d3f5c06367759be940e9ed3f568359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d146fc32a9cf13bc479820e515048298a34cd432",
-                "reference": "v2.2.1",
+                "url": "https://api.github.com/repos/symfony/console/zipball/0e5e18ae09d3f5c06367759be940e9ed3f568359",
+                "reference": "0e5e18ae09d3f5c06367759be940e9ed3f568359",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/phpunit-bridge": "~2.7",
+                "symfony/process": "~2.1"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -219,12 +230,12 @@
                 },
                 {
                     "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2013-03-19 20:48:08"
+            "homepage": "https://symfony.com",
+            "time": "2015-07-26 09:08:40"
         }
     ],
     "packages-dev": [],
@@ -233,6 +244,11 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {
+        "php": "^5.3.6 || ^7.0"
+    },
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.3.6"
+    }
 }
