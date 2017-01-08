@@ -2,36 +2,43 @@
 
 namespace Clue\GraphComposer\Graph;
 
-use Fhaculty\Graph\Graph;
 use Fhaculty\Graph\Attribute\AttributeAware;
 use Fhaculty\Graph\Attribute\AttributeBagNamespaced;
+use Fhaculty\Graph\Graph;
 use Graphp\GraphViz\GraphViz;
 
 class GraphComposer
 {
+    /**
+     * Regular dependency
+     *
+     * @var int
+     */
+    const DEPENDENCY = 1;
+    /**
+     * Development dependency
+     *
+     * @var int
+     */
+    const DEV_DEPENDENCY = 2;
     private $layoutVertex = array(
         'fillcolor' => '#eeeeee',
         'style' => 'filled, rounded',
         'shape' => 'box',
         'fontcolor' => '#314B5F'
     );
-
     private $layoutVertexRoot = array(
         'style' => 'filled, rounded, bold'
     );
-
     private $layoutEdge = array(
         'fontcolor' => '#767676',
         'fontsize' => 10,
         'color' => '#1A2833'
     );
-
     private $layoutEdgeDev = array(
         'style' => 'dashed'
     );
-
     private $dependencyGraph;
-
     /**
      * @var GraphViz
      */
@@ -54,27 +61,52 @@ class GraphComposer
     }
 
     /**
+     * Displaay the graph
      *
-     * @param string $dir
-     * @return \Fhaculty\Graph\Graph
+     * @param bool $hideDevDependencies Hide development dependencies
      */
-    public function createGraph()
+    public function displayGraph($hideDevDependencies = false)
+    {
+        $graph = $this->createGraph($hideDevDependencies);
+
+        $this->graphviz->display($graph);
+    }
+
+    /**
+     * Create the graph
+     *
+     * @param bool $hideDevDependencies Hide development dependencies
+     * @return Graph Graph
+     */
+    public function createGraph($hideDevDependencies = false)
     {
         $graph = new Graph();
+        $dependencyFilter = self::DEPENDENCY | ($hideDevDependencies ? 0 : self::DEV_DEPENDENCY);
+        $dependencies = $this->getDependencyList($dependencyFilter);
 
         foreach ($this->dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
+
+            if (empty($dependencies[$name])) {
+                continue;
+            }
+
             $start = $graph->createVertex($name, true);
 
             $label = $name;
             if ($package->getVersion() !== null) {
-                $label .= ': ' . $package->getVersion();
+                $label .= ': '.$package->getVersion();
             }
 
             $this->setLayout($start, array('label' => $label) + $this->layoutVertex);
 
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
+
+                if (empty($dependencies[$targetName])) {
+                    continue;
+                }
+
                 $target = $graph->createVertex($targetName, true);
 
                 $label = $requires->getVersionConstraint();
@@ -94,7 +126,66 @@ class GraphComposer
         return $graph;
     }
 
-    private function setLayout(AttributeAware $entity, array $layout)
+    /**
+     * Create a list of dependencies to show / export
+     *
+     * @param int $filter Dependency type filter
+     * @return array Dependencies to show / export
+     */
+    protected function getDependencyList($filter = 0)
+    {
+        $allDependencies = array();
+
+        // Run through all dependencies (including the root package)
+        foreach ($this->dependencyGraph->getPackages() as $package) {
+            $name = $package->getName();
+            if (!array_key_exists($name, $allDependencies)) {
+                $allDependencies[$name] = array();
+            }
+
+            // Run through all dependencies
+            foreach ($package->getOutEdges() as $requires) {
+                $targetName = $requires->getDestPackage()->getName();
+                if (!array_key_exists($targetName, $allDependencies)) {
+                    $allDependencies[$targetName] = array();
+                }
+
+                $allDependencies[$name][$targetName] = $requires->isDevDependency() ?
+                    self::DEV_DEPENDENCY : self::DEPENDENCY;
+            }
+        }
+
+        $rootPackage = $this->dependencyGraph->getRootPackage()->getName();
+        $dependencies = array($rootPackage => 1);
+        $this->filterDependencies($rootPackage, $filter, $allDependencies, $dependencies);
+        return $dependencies;
+    }
+
+    /**
+     * Filter the dependencies of a package
+     *
+     * @param string $package Package name
+     * @param int $filter Dependency filter
+     * @param array $dependencies All dependencies
+     * @param array $filteredDependencies Filtered dependencies
+     */
+    protected function filterDependencies($package, $filter, array $dependencies, array &$filteredDependencies) {
+        if (array_key_exists($package, $dependencies)) {
+            foreach ($dependencies[$package] as $require => $dependency) {
+                if ($dependency & $filter) {
+                    $isRegistered = array_key_exists($require, $filteredDependencies);
+                    if (!$isRegistered) {
+                        $filteredDependencies[$require] = 1;
+                        $this->filterDependencies($require, $filter, $dependencies, $filteredDependencies);
+                    } else {
+                        ++$filteredDependencies[$require];
+                    }
+                }
+            }
+        }
+    }
+
+    protected function setLayout(AttributeAware $entity, array $layout)
     {
         $bag = new AttributeBagNamespaced($entity->getAttributeBag(), 'graphviz.');
         $bag->setAttributes($layout);
@@ -102,16 +193,15 @@ class GraphComposer
         return $entity;
     }
 
-    public function displayGraph()
+    /**
+     * Get the graph image path
+     *
+     * @param bool $hideDevDependencies Hide development dependencies
+     * @return string Graph image pathh
+     */
+    public function getImagePath($hideDevDependencies = false)
     {
-        $graph = $this->createGraph();
-
-        $this->graphviz->display($graph);
-    }
-
-    public function getImagePath()
-    {
-        $graph = $this->createGraph();
+        $graph = $this->createGraph($hideDevDependencies);
 
         return $this->graphviz->createImageFile($graph);
     }
