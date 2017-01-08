@@ -63,26 +63,24 @@ class GraphComposer
     /**
      * Displaay the graph
      *
-     * @param bool $hideDevDependencies Hide development dependencies
+     * @param int $filter Dependency type filter
      */
-    public function displayGraph($hideDevDependencies = false)
+    public function displayGraph($filter = 0)
     {
-        $graph = $this->createGraph($hideDevDependencies);
-
+        $graph = $this->createGraph($filter);
         $this->graphviz->display($graph);
     }
 
     /**
      * Create the graph
      *
-     * @param bool $hideDevDependencies Hide development dependencies
+     * @param int $filter Dependency type filter
      * @return Graph Graph
      */
-    public function createGraph($hideDevDependencies = false)
+    public function createGraph($filter = 0)
     {
         $graph = new Graph();
-        $dependencyFilter = self::DEPENDENCY | ($hideDevDependencies ? 0 : self::DEV_DEPENDENCY);
-        $dependencies = $this->getDependencyList($dependencyFilter);
+        $dependencies = $this->getDependencyList($filter);
 
         foreach ($this->dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
@@ -176,7 +174,12 @@ class GraphComposer
                     $isRegistered = array_key_exists($require, $filteredDependencies);
                     if (!$isRegistered) {
                         $filteredDependencies[$require] = 1;
-                        $this->filterDependencies($require, $filter, $dependencies, $filteredDependencies);
+                        $this->filterDependencies(
+                            $require,
+                            $filter | self::DEPENDENCY,
+                            $dependencies,
+                            $filteredDependencies
+                        );
                     } else {
                         ++$filteredDependencies[$require];
                     }
@@ -196,12 +199,12 @@ class GraphComposer
     /**
      * Get the graph image path
      *
-     * @param bool $hideDevDependencies Hide development dependencies
-     * @return string Graph image pathh
+     * @param int $filter Dependency type filter
+     * @return string Graph image path
      */
-    public function getImagePath($hideDevDependencies = false)
+    public function getImagePath($filter = 0)
     {
-        $graph = $this->createGraph($hideDevDependencies);
+        $graph = $this->createGraph($filter);
 
         return $this->graphviz->createImageFile($graph);
     }

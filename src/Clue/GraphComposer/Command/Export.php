@@ -19,11 +19,19 @@ class Export extends Command
             ->addArgument('output', InputArgument::OPTIONAL, 'Path to output image file')
             // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
             ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)'/*, 'svg'*/)
-            ->addOption('no-dev', null, InputOption::VALUE_NONE, 'Hide development dependencies');
+            ->addOption('no-dev', null, InputOption::VALUE_NONE, 'Hide development dependencies')
+            ->addOption('dev-only', null, InputOption::VALUE_NONE, 'Show development dependencies only');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $filter = $input->getOption('dev-only') ?
+            GraphComposer::DEV_DEPENDENCY :
+            (
+            $input->getOption('no-dev') ?
+                GraphComposer::DEPENDENCY :
+                (GraphComposer::DEPENDENCY | GraphComposer::DEV_DEPENDENCY)
+            );
         $graph = new GraphComposer($input->getArgument('dir'));
 
         $target = $input->getArgument('output');
@@ -45,7 +53,7 @@ class Export extends Command
             $graph->setFormat($format);
         }
 
-        $path = $graph->getImagePath($input->getOption('no-dev'));
+        $path = $graph->getImagePath($filter);
 
         if ($target !== null) {
             rename($path, $target);

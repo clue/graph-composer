@@ -67,6 +67,10 @@ $ php graph-composer.phar export ~/path/to/your/project
 *   You may optionally pass an `--format=[svg/svgz/png/jpeg/...]` option to set
     the image type (defaults to `svg`).
 
+*   By default, the graph features both production and development dependencies.
+    *   Pass the `--no-dev` option in order to include production dependencies only.
+    *   Pass the `--dev-only` option in order to visualize the root package and its development dependencies (recursively).
+
 ## Install
 
 You can grab a copy of clue/graph-composer in either of the following ways.
