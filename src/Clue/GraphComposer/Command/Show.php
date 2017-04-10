@@ -17,6 +17,7 @@ class Show extends Command
              ->setDescription('Show dependency graph image for given project directory')
              ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan', '.')
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)', 'svg')
+             ->addOption('rankdir', null, InputOption::VALUE_REQUIRED, 'Randkir (TB, LR, BT, RL)', 'TB')
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
 
@@ -24,6 +25,7 @@ class Show extends Command
     {
         $graph = new GraphComposer($input->getArgument('dir'));
         $graph->setFormat($input->getOption('format'));
+        $graph->setRankdir($input->getOption('rankdir'));
         $graph->displayGraph();
     }
 }
