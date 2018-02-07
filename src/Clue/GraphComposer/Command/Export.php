@@ -20,6 +20,8 @@ class Export extends Command
 
              // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)'/*, 'svg'*/)
+             ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'include', array())
+             ->addOption('exclude', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'exclude', array());
 
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
@@ -46,6 +48,9 @@ class Export extends Command
         if ($format !== null) {
             $graph->setFormat($format);
         }
+
+        $graph->setInclude($input->getOption('include'));
+        $graph->setExclude($input->getOption('exclude'));
 
         $path = $graph->getImagePath();
 
