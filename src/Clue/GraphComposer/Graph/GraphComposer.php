@@ -30,6 +30,10 @@ class GraphComposer
         'style' => 'dashed'
     );
 
+    private $include = array();
+
+    private $exclude = array();
+
     private $dependencyGraph;
 
     /**
@@ -64,6 +68,9 @@ class GraphComposer
 
         foreach ($this->dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
+            if ($this->isPackageFiltered($name)) {
+                continue;
+            }
             $start = $graph->createVertex($name, true);
 
             $label = $name;
@@ -75,6 +82,9 @@ class GraphComposer
 
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
+                if ($this->isPackageFiltered($targetName)) {
+                    continue;
+                }
                 $target = $graph->createVertex($targetName, true);
 
                 $label = $requires->getVersionConstraint();
@@ -121,5 +131,28 @@ class GraphComposer
         $this->graphviz->setFormat($format);
 
         return $this;
+    }
+
+    public function setInclude(array $include)
+    {
+      $this->include = array_map(array($this, 'packageToRegex'), $include);
+    }
+
+    public function setExclude(array $exclude)
+    {
+      $this->exclude = array_map(array($this, 'packageToRegex'), $exclude);
+    }
+
+    private function packageToRegex($packageDescription)
+    {
+      $parts = explode('/', $packageDescription);
+      $parts = array_map(function ($part) { return $part === '*' ? '.*' : $part; }, $parts);
+      return '/' . implode('\\/', $parts) . '/';
+    }
+
+    public function isPackageFiltered($packageName)
+    {
+      return (!empty($this->include) && !array_reduce($this->include, function ($acc, $cur) use ($packageName) { return $acc || (preg_match($cur, $packageName) === 1); }, false))
+      || (!empty($this->exclude) && array_reduce($this->exclude, function ($acc, $cur) use ($packageName) { return $acc || (preg_match($cur, $packageName) === 1); }, false));
     }
 }

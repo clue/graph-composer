@@ -51,4 +51,86 @@ class GraphTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($graphComposer, $ret);
     }
+
+    public function testWillNotRestrictWithoutSetting()
+    {
+        $dir = __DIR__ . '/../';
+
+        $graphComposer = new GraphComposer($dir);
+
+        $this->assertTrue(!$graphComposer->isPackageFiltered('c/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('c/y'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('b/y'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('a/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('b/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('a/y'));
+    }
+
+    public function testWillInclude()
+    {
+        $dir = __DIR__ . '/../';
+
+        $graphComposer = new GraphComposer($dir);
+
+        $included = [
+          'a/*',
+          'b/x'
+        ];
+
+        $graphComposer->setInclude($included);
+
+        $this->assertTrue($graphComposer->isPackageFiltered('c/x'));
+        $this->assertTrue($graphComposer->isPackageFiltered('c/y'));
+        $this->assertTrue($graphComposer->isPackageFiltered('b/y'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('a/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('b/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('a/y'));
+    }
+
+    public function testWillExclude()
+    {
+        $dir = __DIR__ . '/../';
+
+        $graphComposer = new GraphComposer($dir);
+
+        $excluded = [
+          'a/*',
+          'b/x'
+        ];
+
+        $graphComposer->setExclude($excluded);
+
+        $this->assertTrue(!$graphComposer->isPackageFiltered('c/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('c/y'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('b/y'));
+        $this->assertTrue($graphComposer->isPackageFiltered('a/x'));
+        $this->assertTrue($graphComposer->isPackageFiltered('b/x'));
+        $this->assertTrue($graphComposer->isPackageFiltered('a/y'));
+    }
+
+    public function testWillIncludeAndExclude()
+    {
+        $dir = __DIR__ . '/../';
+
+        $graphComposer = new GraphComposer($dir);
+
+        $included = [
+          'a/*',
+          'b/x'
+        ];
+
+        $excluded = [
+          '*/y'
+        ];
+
+        $graphComposer->setInclude($included);
+        $graphComposer->setExclude($excluded);
+
+        $this->assertTrue($graphComposer->isPackageFiltered('c/x'));
+        $this->assertTrue($graphComposer->isPackageFiltered('c/y'));
+        $this->assertTrue($graphComposer->isPackageFiltered('b/y'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('a/x'));
+        $this->assertTrue(!$graphComposer->isPackageFiltered('b/x'));
+        $this->assertTrue($graphComposer->isPackageFiltered('a/y'));
+    }
 }
