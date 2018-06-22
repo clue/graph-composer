@@ -5,10 +5,10 @@
     "homepage": "https://github.com/clue/graph-composer",
     "license": "MIT",
     "require": {
-        "php": "^5.3.6 || ^7.0",
+        "php": "^7",
         "clue/graph": "^0.9.0",
         "jms/composer-deps-analyzer": "^1.0",
-        "symfony/console": "^2.1 || ^3.0",
+        "symfony/console": "^4.1",
         "graphp/graphviz": "^0.2.1"
     },
     "autoload": {
@@ -18,11 +18,6 @@
     "extra": {
         "phar": {
             "bundler": "composer"
-        }
-    },
-    "config": {
-        "platform": {
-            "php": "5.3.6"
         }
     },
     "require-dev": {
