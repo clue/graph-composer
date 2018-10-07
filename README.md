@@ -72,6 +72,11 @@ $ php graph-composer.phar export ~/path/to/your/project
 
 You can grab a copy of clue/graph-composer in either of the following ways.
 
+This project aims to run on any platform and thus does not require any PHP
+extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
+HHVM.
+It's *highly recommended to use PHP 7+* for this project.
+
 ### As a phar (recommended)
 
 You can simply download a pre-compiled and ready-to-use version as a Phar
