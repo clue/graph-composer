@@ -16,6 +16,7 @@ Graph visualization for your project's `composer.json` and its dependencies:
     * [Updating dependency](#updating-dependency)
   * [Manual Installation from Source](#manual-installation-from-source)
     * [Updating manually](#updating-manually)
+* [Tests](#tests)
 * [License](#license)
 
 ## Usage
@@ -175,12 +176,13 @@ You can now verify everything works by running graph-composer like this:
 $ php bin/graph-composer show
 ```
 
-> If you want to build the above mentioned `graph-composer.phar` yourself, you have
+> If you want to build the above mentioned `graph-composer.phar` yourself, you
+should install this project without its development dependencies and then have
 to install [clue/phar-composer](https://github.com/clue/phar-composer#install)
 and can simply invoke:
 >
 > ```bash
-> $ php phar-composer.phar build ~/workspace/graph-composer
+> $ php composer.phar install --no-dev && php phar-composer.phar build
 > ```
 
 #### Updating manually
@@ -188,6 +190,21 @@ and can simply invoke:
 ```bash
 $ git pull
 $ php composer.phar install
+```
+
+## Tests
+
+To run the test suite, you first need to clone this repo and then install all
+dependencies [through Composer](http://getcomposer.org):
+
+```bash
+$ composer install
+```
+
+To run the test suite, go to the project root and run:
+
+```bash
+$ php vendor/bin/phpunit
 ```
 
 ## License
