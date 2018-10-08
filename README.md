@@ -11,11 +11,8 @@ Graph visualization for your project's `composer.json` and its dependencies:
   * [graph-composer export](#graph-composer-export)
 * [Install](#install)
   * [As a phar (recommended)](#as-a-phar-recommended)
-    * [Updating phar](#updating-phar)
   * [Installation using Composer](#installation-using-composer)
-    * [Updating dependency](#updating-dependency)
   * [Manual Installation from Source](#manual-installation-from-source)
-    * [Updating manually](#updating-manually)
 * [Tests](#tests)
 * [License](#license)
 
@@ -77,26 +74,30 @@ extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
 HHVM.
 It's *highly recommended to use PHP 7+* for this project.
 
-### As a phar (recommended)
-
-You can simply download a pre-compiled and ready-to-use version as a Phar
-to any directory.
-Simply download the latest `graph-composer.phar` file from our
-[releases page](https://github.com/clue/graph-composer/releases):
-
-[Latest release](https://github.com/clue/graph-composer/releases/latest)
-
-Additionally, you'll have to install GraphViz (`dot` executable).
-Users of Debian/Ubuntu-based distributions may simply invoke:
+The graph drawing feature is powered by the excellent [GraphViz](https://www.graphviz.org)
+software. This means you'll have to install GraphViz (`dot` executable).
+The [Graphviz homepage](https://www.graphviz.org/download/) includes complete
+installation instructions for most common platforms, users of Debian/Ubuntu-based
+distributions may simply invoke:
 
 ```bash
-$ sudo apt-get install graphviz
+$ sudo apt install graphviz
 ```
 
-Windows users have to [download GraphViZ for Windows](http://www.graphviz.org/Download_windows.php) and remaining
-users should install from [GraphViz homepage](http://www.graphviz.org/Download.php).
+### As a phar (recommended)
 
-That's it already. You can now verify everything works by running this:
+Once you have PHP and GraphViz installed, you can simply download a pre-packaged
+and ready-to-use version of this project as a Phar to any directory.
+You can simply download the latest `graph-composer.phar` file from our
+[releases page](https://github.com/clue/graph-composer/releases).
+The [latest release](https://github.com/clue/graph-composer/releases/latest) can
+always be downloaded like this:
+
+```bash
+$ curl -OL https://lueck.tv/graph-composer-latest.phar
+```
+
+That's it already. Once downloaded, you can verify everything works by running this:
 
 ```bash
 $ cd ~/Downloads
@@ -107,7 +108,7 @@ $ php graph-composer.phar --version
 each time, you may simply invoke:
 > 
 > ```bash
-> $ chmod 0755 graph-composer.phar
+> $ chmod +x graph-composer.phar
 > $ sudo mv graph-composer.phar /usr/local/bin/graph-composer
 > ```
 >
@@ -116,8 +117,6 @@ each time, you may simply invoke:
 > ```bash
 > $ graph-composer --version
 > ```
-
-#### Updating phar
 
 There's no separate `update` procedure, simply download the latest release again
 and overwrite the existing phar.
@@ -157,10 +156,7 @@ $ graph-composer show ~/path/to/your/project
 Installing this project as a non-dev dependency in order to use its
 source code as a library is *not supported*.
 
-#### Updating dependency
-
-Just run `composer update clue/graph-composer` to update to the latest release.
-
+To update to the latest release, just run `composer update clue/graph-composer`.
 If you installed it globally via composer you can run `composer global update clue/graph-composer` instead.
 
 ### Manual Installation from Source
@@ -190,7 +186,7 @@ and can simply invoke:
 > $ php composer.phar install --no-dev && php phar-composer.phar build
 > ```
 
-#### Updating manually
+To update to the latest development version, just run this:
 
 ```bash
 $ git pull
