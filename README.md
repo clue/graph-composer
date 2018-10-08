@@ -2,7 +2,7 @@
 
 Graph visualization for your project's `composer.json` and its dependencies:
 
-![dependency graph for graph-composer](https://cloud.githubusercontent.com/assets/776829/11199047/46dd4dd2-8cca-11e5-845f-cbe485764f56.png)
+![dependency graph for clue/graph-composer](https://cloud.githubusercontent.com/assets/776829/11199047/46dd4dd2-8cca-11e5-845f-cbe485764f56.png)
 
 **Table of contents**
 
@@ -12,7 +12,7 @@ Graph visualization for your project's `composer.json` and its dependencies:
 * [Install](#install)
   * [As a phar (recommended)](#as-a-phar-recommended)
   * [Installation using Composer](#installation-using-composer)
-  * [Manual Installation from Source](#manual-installation-from-source)
+* [Development](#development)
 * [Tests](#tests)
 * [License](#license)
 
@@ -123,8 +123,8 @@ and overwrite the existing phar.
 
 ### Installation using Composer
 
-Alternatively, you can also install graph-composer as part of your development dependencies.
-You will likely want to use the `require-dev` section to exclude graph-composer in your production environment.
+Alternatively, you can also install clue/graph-composer as part of your development dependencies.
+You will likely want to use the `require-dev` section to exclude clue/graph-composer in your production environment.
 
 This method also requires PHP 5.3+, GraphViz and, of course, Composer.
 
@@ -159,39 +159,72 @@ source code as a library is *not supported*.
 To update to the latest release, just run `composer update clue/graph-composer`.
 If you installed it globally via composer you can run `composer global update clue/graph-composer` instead.
 
-### Manual Installation from Source
+## Development
 
-This project requires PHP 5.3+, Composer and GraphViz:
+clue/graph-composer is an [open-source project](#license) and encourages everybody to
+participate in its development.
+You're interested in checking out how clue/graph-composer works under the hood and/or want
+to contribute to the development of clue/graph-composer?
+Then this section is for you!
+
+The recommended way to install clue/graph-composer is to clone (or download) this repository
+and use [Composer](http://getcomposer.org) to download its dependencies.
+Therefore you'll need PHP, Composer, GraphViz, git and curl installed.
+For example, on a recent Ubuntu/debian system, simply run:
 
 ```bash
-$ sudo apt-get install php5-cli graphviz
+$ sudo apt install php7.2-cli git curl graphviz
+
 $ git clone https://github.com/clue/graph-composer.git
 $ cd graph-composer
+
 $ curl -s https://getcomposer.org/installer | php
-$ php composer.phar install
+$ sudo mv composer.phar /usr/local/bin/composer
+
+$ composer install
 ```
 
-You can now verify everything works by running graph-composer like this:
+You can now verify everything works by running clue/graph-composer like this:
 
 ```bash
 $ php bin/graph-composer show
 ```
 
-> If you want to build the above mentioned `graph-composer.phar` yourself, you
-should install this project without its development dependencies and then have
-to install [clue/phar-composer](https://github.com/clue/phar-composer#install)
-and can simply invoke:
->
-> ```bash
-> $ php composer.phar install --no-dev && php phar-composer.phar build
-> ```
+If you want to distribute clue/graph-composer as a single standalone release file, you may
+compile the project into a single `graph-composer.phar` file like this:
 
-To update to the latest development version, just run this:
+```bash
+$ composer build
+```
+
+> Note that compiling will temporarily install a copy of this project to the
+  local `build/` directory and install all non-development dependencies
+  for distribution. This should only take a second or two if you've previously
+  installed its dependencies already.
+  The build script optionally accepts the version number (`VERSION` env) and
+  an output file name or will otherwise try to look up the last release tag,
+  such as `graph-composer-1.0.0.phar`.
+
+You can now verify the resulting `graph-composer.phar` file works by running it
+like this:
+
+```bash
+$ ./graph-composer.phar --version
+```
+
+To update your development version to the latest version, just run this:
 
 ```bash
 $ git pull
 $ php composer.phar install
 ```
+
+Made some changes to your local development version?
+
+Make sure to let the world know! :shipit:
+We welcome PRs and would love to hear from you!
+
+Happy hacking!
 
 ## Tests
 

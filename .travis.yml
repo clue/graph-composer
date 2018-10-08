@@ -17,6 +17,8 @@ matrix:
   include:
     - php: 5.3
       dist: precise
+    - php: 7.2
+      script: composer build
   allow_failures:
     - php: hhvm
 
