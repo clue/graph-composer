@@ -12,6 +12,7 @@
         "symfony/console": "^3.0 || ^2.1"
     },
     "require-dev": {
+        "clue/phar-composer": "^1.0",
         "phpunit/phpunit": "^4.8.36"
     },
     "autoload": {
@@ -27,5 +28,13 @@
         "platform": {
             "php": "5.3.6"
         }
+    },
+    "scripts": {
+        "build": [
+            "rm -rf build && mkdir build",
+            "cp -r bin/ src/ composer.json composer.lock LICENSE build/",
+            "@composer install -d build/ --no-dev",
+            "phar-composer build build/"
+        ]
     }
 }
