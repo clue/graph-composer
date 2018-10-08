@@ -201,12 +201,15 @@ $ composer build
   local `build/` directory and install all non-development dependencies
   for distribution. This should only take a second or two if you've previously
   installed its dependencies already.
+  The build script optionally accepts the version number (`VERSION` env) and
+  an output file name or will otherwise try to look up the last release tag,
+  such as `graph-composer-1.0.0.phar`.
 
 You can now verify the resulting `graph-composer.phar` file works by running it
 like this:
 
 ```bash
-$ ./graph-composer.phar --help
+$ ./graph-composer.phar --version
 ```
 
 To update your development version to the latest version, just run this:

@@ -30,13 +30,6 @@
         }
     },
     "scripts": {
-        "build": [
-            "rm -rf build && mkdir build",
-            "cp -r bin/ src/ composer.json composer.lock LICENSE build/",
-            "@composer install -d build/ --no-dev",
-            "cd build/ && rm -rf composer.lock vendor/*/*/tests/ vendor/*/*/*.md vendor/*/*/composer.* vendor/*/*/phpunit.*",
-            "cd build/vendor/symfony/console/Symfony/Component/Console/ && rm -rf Tests/ *.md composer.* phpunit.*",
-            "phar-composer build build/"
-        ]
+        "build": "@php build.php"
     }
 }
