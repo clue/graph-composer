@@ -76,13 +76,10 @@ class GraphComposer
 
         if ($packageExclusionRule === null) {
             $packageExclusionRule = new ChainedPackageRule();
-            //$packageExclusionRule->add(new NoPhpExtensionRule());
-            //$packageExclusionRule->add(new ExcludeByNamePackageRule('#^php$#'));
         }
 
         if ($dependencyExclusionRule === null) {
             $dependencyExclusionRule = new ChainedDependencyRule();
-            // $dependencyExclusionRule->add(new NoDevDependencyRule());
         }
 
         $analyzer = new \JMS\Composer\DependencyAnalyzer();
