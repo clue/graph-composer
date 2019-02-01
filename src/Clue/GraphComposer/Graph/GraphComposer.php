@@ -67,8 +67,8 @@ class GraphComposer
         GraphViz $graphviz = null,
         PackageRule $packageExclusionRule = null,
         DependencyRule $dependencyExclusionRule = null,
-        $maxDepth = PHP_INT_MAX)
-    {
+        $maxDepth = PHP_INT_MAX
+    ) {
         if ($graphviz === null) {
             $graphviz = new GraphViz();
             $graphviz->setFormat('svg');
@@ -94,8 +94,6 @@ class GraphComposer
     }
 
     /**
-     *
-     * @param string $dir
      * @return \Fhaculty\Graph\Graph
      */
     public function createGraph()
@@ -109,18 +107,38 @@ class GraphComposer
         return $graph;
     }
 
+    public function displayGraph()
+    {
+        $graph = $this->createGraph();
+
+        $this->graphviz->display($graph);
+    }
+
+    public function getImagePath()
+    {
+        $graph = $this->createGraph();
+
+        return $this->graphviz->createImageFile($graph);
+    }
+
     private function drawPackageNode(
         Graph $graph,
         PackageNode $packageNode,
         array &$drawnPackages,
         array $layoutVertex = null,
-        $depth = 0)
-    {
-        if (count($drawnPackages) && $this->packageExclusionRule->isExcluded($packageNode)) {
+        $depth = 0
+    ) {
+        // the root package may not excluded
+        // beginning with $depth = 1 the packages are filtered using the exclude rule
+        if ($depth > 0 && $this->packageExclusionRule->isExcluded($packageNode)) {
             return null;
         }
 
         $name = $packageNode->getName();
+        // ensure that packages are only drawn once
+        // if two packages in the tree require a package twice
+        // then this dependency does not need to be drawn twice
+        // and the vertex is returned directly (so an edge can be added)
         if (isset($drawnPackages[$name])) {
             return $drawnPackages[$name];
         }
@@ -133,16 +151,16 @@ class GraphComposer
             $layoutVertex = $this->layoutVertex;
         }
 
+        $vertex = $drawnPackages[$name] = $graph->createVertex($name, true);
+
         $label = $name;
         if ($packageNode->getVersion()) {
             $label .= ': ' .$packageNode->getVersion();
         }
-        $vertex = $graph->createVertex($name, true);
         $this->setLayout($vertex, array('label' => $label) + $layoutVertex);
-        $drawnPackages[$name] = $vertex;
 
-        foreach ($packageNode->getOutEdges() as $dependency)
-        {
+        // this foreach will loop over the dependencies of the current package
+        foreach ($packageNode->getOutEdges() as $dependency) {
             if ($this->dependencyExclusionRule->isExcluded($dependency)) {
                 continue;
             }
@@ -155,6 +173,9 @@ class GraphComposer
 
             $targetVertex = $this->drawPackageNode($graph, $dependency->getDestPackage(), $drawnPackages, null, $depth + 1);
 
+            // drawPackageNode will return null if the package should not be shown
+            // also the dependencies of a package will be only drawn if max depth is not reached
+            // this ensures that packages in a deeper level will not have any dependency
             if ($targetVertex && $depth < $this->maxDepth) {
                 $label = $dependency->getVersionConstraint();
                 $edge = $vertex->createEdgeTo($targetVertex);
@@ -172,20 +193,6 @@ class GraphComposer
         $bag->setAttributes($layout);
 
         return $entity;
-    }
-
-    public function displayGraph()
-    {
-        $graph = $this->createGraph();
-
-        $this->graphviz->display($graph);
-    }
-
-    public function getImagePath()
-    {
-        $graph = $this->createGraph();
-
-        return $this->graphviz->createImageFile($graph);
     }
 
     public function setFormat($format)
