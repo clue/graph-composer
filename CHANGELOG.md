@@ -1,5 +1,19 @@
 # Changelog
 
+## ?.?.? (unreleased)
+
+* Dev dependencies are only rendered for the root package
+
+* Added new options to filter packages and dependencies:
+    * `--no-dev` will hide dev dependencies
+    * `--no-php` will hide the constraints regarding the PHP version
+    * `--no-ext` will hide PHP extensions
+    * `--depth` will limit the depth of the generated graph
+    * `--exclude-regex` allows to apply regular expressions to hide packages
+    * `--only-regex` show only packages with their name matching the expression
+    * `--exclude-type` exclude pacakges with given type
+    * `--only-type` only show packages of given type
+
 ## 1.0.0 (2015-11-17)
 
 *   First stable release, now following SemVer.
