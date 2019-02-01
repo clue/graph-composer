@@ -1,8 +1,7 @@
 <?php
 
-namespace Clue\GraphComposer\Exclusion\Dependency;
+namespace Clue\GraphComposer\Exclusion\Package;
 
-use Clue\GraphComposer\Exclusion\Package\PackageRule;
 use JMS\Composer\Graph\PackageNode;
 
 class NegatePackageRule implements PackageRule
