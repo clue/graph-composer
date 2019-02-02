@@ -1,5 +1,7 @@
 <?php
 
+die('Disabled because clue/phar-composer is totally outdated (see https://github.com/clue/phar-composer/issues/80)'.PHP_EOL);
+
 // explicitly give VERSION via ENV or ask git for current version
 $version = getenv('VERSION');
 if ($version === false) {
