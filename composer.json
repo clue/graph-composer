@@ -1,26 +1,37 @@
 {
-    "name": "clue/graph-composer",
-    "description": "Dependency graph visualization for composer.json",
-    "keywords": ["dependency graph", "visualize dependencies", "visualize composer"],
-    "homepage": "https://github.com/clue/graph-composer",
-    "license": "MIT",
-    "require": {
-        "php": "^7",
-        "clue/graph": "^0.9.0",
-        "jms/composer-deps-analyzer": "^1.0",
-        "symfony/console": "^4.1",
-        "graphp/graphviz": "^0.2.1"
-    },
-    "autoload": {
-        "psr-0": { "Clue\\GraphComposer": "src/" }
-    },
-    "bin": [ "bin/graph-composer" ],
-    "extra": {
-        "phar": {
-            "bundler": "composer"
-        }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.8"
+  "name": "clue/graph-composer",
+  "description": "Dependency graph visualization for composer.json",
+  "keywords": [
+    "dependency graph",
+    "visualize dependencies",
+    "visualize composer"
+  ],
+  "homepage": "https://github.com/clue/graph-composer",
+  "license": "MIT",
+  "require": {
+    "php": "^7",
+    "clue/graph": "^0.9.0",
+    "jms/composer-deps-analyzer": "^1.0",
+    "symfony/console": "^4.1",
+    "graphp/graphviz": "^0.2.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8.36"
+  },
+  "autoload": {
+    "psr-0": {
+      "Clue\\GraphComposer": "src/"
     }
+  },
+  "bin": [
+    "bin/graph-composer"
+  ],
+  "extra": {
+    "phar": {
+      "bundler": "composer"
+    }
+  },
+  "scripts": {
+    "build": "@php build.php"
+  }
 }

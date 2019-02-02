@@ -1,3 +1,5 @@
 /vendor
 /.idea
 /.gitignore
+/build/
+/graph-composer-*.phar

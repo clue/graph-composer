@@ -8,7 +8,7 @@ class App extends BaseApplication
 {
     public function __construct()
     {
-        parent::__construct('graph-composer', '@git_tag@');
+        parent::__construct('clue/graph-composer', '@dev');
 
         $this->add(new Command\Show());
         $this->add(new Command\Export());
