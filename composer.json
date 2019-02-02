@@ -12,7 +12,7 @@
     "php": "^7",
     "clue/graph": "^0.9.0",
     "jms/composer-deps-analyzer": "^1.0",
-    "symfony/console": "^4.1",
+    "symfony/console": "^3",
     "graphp/graphviz": "^0.2.1"
   },
   "require-dev": {
