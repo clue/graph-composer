@@ -19,6 +19,9 @@ matrix:
       dist: precise
     - php: 7.2
       script: composer build
+    - php: 7.2
+      install: []
+      script: composer install --dry-run --working-dir=tests/install-as-dep
   allow_failures:
     - php: hhvm
 
