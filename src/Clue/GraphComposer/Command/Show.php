@@ -25,5 +25,7 @@ class Show extends Command
         $graph = new GraphComposer($input->getArgument('dir'));
         $graph->setFormat($input->getOption('format'));
         $graph->displayGraph();
+
+        return 0;
     }
 }
