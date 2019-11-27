@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7158f16382fcab8c2ed71f5b46ab1dd",
+    "content-hash": "e512c4bbb82483172f880affbc89cf41",
     "packages": [
         {
             "name": "clue/graph",
@@ -240,34 +240,32 @@
     "packages-dev": [
         {
             "name": "clue/phar-composer",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/phar-composer.git",
-                "reference": "3ea2cd961c45290b2578c6bf971ae028bfcd6377"
+                "reference": "597437e2c70f7b5214223b79d2fe8c3e88135842"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/phar-composer/zipball/3ea2cd961c45290b2578c6bf971ae028bfcd6377",
-                "reference": "3ea2cd961c45290b2578c6bf971ae028bfcd6377",
+                "url": "https://api.github.com/repos/clue/phar-composer/zipball/597437e2c70f7b5214223b79d2fe8c3e88135842",
+                "reference": "597437e2c70f7b5214223b79d2fe8c3e88135842",
                 "shasum": ""
             },
             "require": {
-                "herrera-io/box": "~1.5",
-                "knplabs/packagist-api": "~1.0",
-                "symfony/console": "~2.1",
-                "symfony/finder": "~2.1",
-                "symfony/process": "~2.1"
+                "herrera-io/box": "^1.5",
+                "knplabs/packagist-api": "^1.0",
+                "symfony/console": "^5.0 || ^4.0 || ^3.0 || ^2.5",
+                "symfony/finder": "^5.0 || ^4.0 || ^3.0 || ^2.5",
+                "symfony/process": "^5.0 || ^4.0 || ^3.0 || ^2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
             },
             "bin": [
                 "bin/phar-composer"
             ],
             "type": "library",
-            "extra": {
-                "phar": {
-                    "bundler": "composer"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Clue": "src/"
@@ -280,17 +278,19 @@
             "authors": [
                 {
                     "name": "Christian Lück",
-                    "email": "christian@lueck.tv"
+                    "email": "christian@clue.engineering"
                 }
             ],
-            "description": "Simple phar creation for your projects managed via composer",
+            "description": "Simple phar creation for any project managed via Composer",
             "homepage": "https://github.com/clue/phar-composer",
             "keywords": [
                 "build process",
                 "bundle dependencies",
-                "executable phar"
+                "composer",
+                "executable phar",
+                "phar"
             ],
-            "time": "2015-11-15T18:36:37+00:00"
+            "time": "2019-11-22T07:57:12+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1959,5 +1959,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "5.3.6"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

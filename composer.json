@@ -12,18 +12,13 @@
         "symfony/console": "^5.0 || ^4.0 || ^3.0 || ^2.1"
     },
     "require-dev": {
-        "clue/phar-composer": "^1.0",
+        "clue/phar-composer": "^1.1",
         "phpunit/phpunit": "^4.8.36"
     },
     "autoload": {
         "psr-0": { "Clue\\GraphComposer": "src/" }
     },
     "bin": [ "bin/graph-composer" ],
-    "extra": {
-        "phar": {
-            "bundler": "composer"
-        }
-    },
     "config": {
         "platform": {
             "php": "5.3.6"
