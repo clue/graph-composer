@@ -8,7 +8,7 @@
         "php": ">=5.3.6",
         "clue/graph": "^0.9.1",
         "graphp/graphviz": "^0.2.2",
-        "jms/composer-deps-analyzer": "0.1.*",
+        "jms/composer-deps-analyzer": "^1.0.1",
         "symfony/console": "^5.0 || ^4.0 || ^3.0 || ^2.1"
     },
     "require-dev": {

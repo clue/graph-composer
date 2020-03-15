@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a569d04062941ac9f10a8b7f5f9df213",
+    "content-hash": "e05a5ca9d22cd8390b7804142909aa30",
     "packages": [
         {
             "name": "clue/graph",
@@ -95,16 +95,16 @@
         },
         {
             "name": "jms/composer-deps-analyzer",
-            "version": "0.1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/composer-deps-analyzer.git",
-                "reference": "912227ebdca09ca8bd67509645ac6318a136aa46"
+                "reference": "6e72a866c40a98e63efb6bb059a2bbaadcb8aa15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/composer-deps-analyzer/zipball/912227ebdca09ca8bd67509645ac6318a136aa46",
-                "reference": "912227ebdca09ca8bd67509645ac6318a136aa46",
+                "url": "https://api.github.com/repos/schmittjoh/composer-deps-analyzer/zipball/6e72a866c40a98e63efb6bb059a2bbaadcb8aa15",
+                "reference": "6e72a866c40a98e63efb6bb059a2bbaadcb8aa15",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 "Apache2"
             ],
             "description": "Builds a Dependency Graph from a composer.json file",
-            "time": "2013-05-15T18:04:27+00:00"
+            "time": "2016-11-09T16:59:19+00:00"
         },
         {
             "name": "symfony/console",
