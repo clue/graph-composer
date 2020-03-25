@@ -1,6 +1,35 @@
 <?php
 
 use Clue\GraphComposer\Graph\GraphComposer;
+use Graphp\GraphViz\GraphViz;
+use Fhaculty\Graph\Graph;
+
+class GraphVizMockDisplay extends GraphViz
+{
+    public $called = 0;
+    public function display(Graph $graph)
+    {
+        ++$this->called;
+    }
+}
+
+class GraphVizMockCreateImageFile extends GraphViz
+{
+    public $called = 0;
+    public function createImageFile(Graph $graph)
+    {
+        return 'test' . ++$this->called . '.png';
+    }
+}
+
+class GraphVizMockSetFormat extends GraphViz
+{
+    public $called = null;
+    public function setFormat($format)
+    {
+        $this->called = $format;
+    }
+}
 
 class GraphTest extends PHPUnit_Framework_TestCase
 {
@@ -15,40 +44,43 @@ class GraphTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(count($graph->getVertices()) > 0);
     }
 
-    public function testWillDisplayGraph()
+    public function testDisplayGraphCallsDisplayGraphViz()
     {
         $dir = __DIR__ . '/../';
 
-        $graphviz = $this->getMock('Graphp\GraphViz\GraphViz');
-        $graphviz->expects($this->once())->method('display');
+        // mocking with PHP 7.4 reports error with legacy PHPUnit, create manual mock classes instead
+        $graphviz = new GraphVizMockDisplay();
 
         $graphComposer = new GraphComposer($dir, $graphviz);
         $graphComposer->displayGraph();
+
+        $this->assertEquals(1, $graphviz->called);
     }
 
-    public function testWillWriteTemporaryGraph()
+    public function testGetImagePathWillCreateTemporaryImageFileViaGraphViz()
     {
         $dir = __DIR__ . '/../';
 
-        $graphviz = $this->getMock('Graphp\GraphViz\GraphViz');
-        $graphviz->expects($this->once())->method('createImageFile')->will($this->returnValue('test.png'));
+        // mocking with PHP 7.4 reports error with legacy PHPUnit, create manual mock classes instead
+        $graphviz = new GraphVizMockCreateImageFile();
 
         $graphComposer = new GraphComposer($dir, $graphviz);
         $ret = $graphComposer->getImagePath();
 
-        $this->assertEquals('test.png', $ret);
+        $this->assertEquals('test1.png', $ret);
     }
 
-    public function testWillSetFormat()
+    public function testSetFormatWillSetFormatOnGraphViz()
     {
         $dir = __DIR__ . '/../';
 
-        $graphviz = $this->getMock('Graphp\GraphViz\GraphViz');
-        $graphviz->expects($this->once())->method('setFormat')->with($this->equalTo('gif'));
+        // mocking with PHP 7.4 reports error with legacy PHPUnit, create manual mock classes instead
+        $graphviz = new GraphVizMockSetFormat();
 
         $graphComposer = new GraphComposer($dir, $graphviz);
         $ret = $graphComposer->setFormat('gif');
 
         $this->assertEquals($graphComposer, $ret);
+        $this->assertEquals('gif', $graphviz->called);
     }
 }
