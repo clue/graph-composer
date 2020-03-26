@@ -94,7 +94,7 @@ The [latest release](https://github.com/clue/graph-composer/releases/latest) can
 always be downloaded like this:
 
 ```bash
-$ curl -OL https://lueck.tv/graph-composer-latest.phar
+$ curl -JOL https://clue.engineering/graph-composer-latest.phar
 ```
 
 That's it already. Once downloaded, you can verify everything works by running this:
@@ -168,7 +168,7 @@ to contribute to the development of clue/graph-composer?
 Then this section is for you!
 
 The recommended way to install clue/graph-composer is to clone (or download) this repository
-and use [Composer](http://getcomposer.org) to download its dependencies.
+and use [Composer](https://getcomposer.org) to download its dependencies.
 Therefore you'll need PHP, Composer, GraphViz, git and curl installed.
 For example, on a recent Ubuntu/debian system, simply run:
 
@@ -229,7 +229,7 @@ Happy hacking!
 ## Tests
 
 To run the test suite, you first need to clone this repo and then install all
-dependencies [through Composer](http://getcomposer.org):
+dependencies [through Composer](https://getcomposer.org):
 
 ```bash
 $ composer install
@@ -243,4 +243,7 @@ $ php vendor/bin/phpunit
 
 ## License
 
-MIT
+This project is released under the permissive [MIT license](LICENSE).
+
+> Did you know that I offer custom development services and issuing invoices for
+  sponsorships of releases and for contributions? Contact me (@clue) for details.
