@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/console": "^4.0"
+    },
+    "require-dev": {
+        "clue/graph-composer": "*@dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../"
+        }
+    ]
+}

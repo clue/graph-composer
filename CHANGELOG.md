@@ -14,6 +14,25 @@
     * `--exclude-type` exclude pacakges with given type
     * `--only-type` only show packages of given type
 
+## 1.1.0 (2020-03-26)
+
+*   Feature: Forward compatibility with symfony/console v5, v4, v3 and legacy v2.
+    (#34 by @keradus and #48 by @clue)
+
+*   Feature / Fix: Update all dependencies and fix handling non-lowercase package names.
+    (#50 and #52 by @clue)
+
+*   Improve documentation and installation instructions and add support / sponsorship info.
+    (#32 by @xavismeh and #43 and #49 by @clue)
+
+*   Improve build setup, add clue/phar-composer to `require-dev`, add build script and update development docs.
+    (#44 by @clue)
+
+*   Improve test suite by adding PHPUnit to `require-dev`,
+    support legacy PHP 5.3 through PHP 7.4 and legacy HHVM and simplify test matrix.
+    (#42 and #51 by @clue)
+
+
 ## 1.0.0 (2015-11-17)
 
 *   First stable release, now following SemVer.

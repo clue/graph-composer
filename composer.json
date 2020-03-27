@@ -5,25 +5,20 @@
     "homepage": "https://github.com/clue/graph-composer",
     "license": "MIT",
     "require": {
-        "php": "^5.3.6 || ^7.0",
-        "clue/graph": "^0.9.0",
-        "graphp/graphviz": "^0.2.0",
-        "jms/composer-deps-analyzer": "0.1.*",
-        "symfony/console": "^3.0 || ^2.1"
+        "php": ">=5.3.6",
+        "clue/graph": "^0.9.1",
+        "graphp/graphviz": "^0.2.2",
+        "jms/composer-deps-analyzer": "^1.0.1",
+        "symfony/console": "^5.0 || ^4.0 || ^3.0 || ^2.1"
     },
     "require-dev": {
-        "clue/phar-composer": "^1.0",
+        "clue/phar-composer": "^1.1",
         "phpunit/phpunit": "^4.8.36"
     },
     "autoload": {
         "psr-0": { "Clue\\GraphComposer": "src/" }
     },
     "bin": [ "bin/graph-composer" ],
-    "extra": {
-        "phar": {
-            "bundler": "composer"
-        }
-    },
     "config": {
         "platform": {
             "php": "5.3.6"

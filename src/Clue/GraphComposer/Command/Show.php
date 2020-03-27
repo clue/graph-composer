@@ -19,5 +19,7 @@ class Show extends AbstractCommand
     {
         $graph = $this->createGraph($input);
         $graph->displayGraph();
+
+        return 0;
     }
 }
