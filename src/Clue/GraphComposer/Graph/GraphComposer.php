@@ -38,6 +38,11 @@ class GraphComposer
     private $graphviz;
 
     /**
+     * @var string
+     */
+    private $rankdir = 'TB';
+
+    /**
      *
      * @param string $dir
      * @param GraphViz|null $graphviz
@@ -61,6 +66,7 @@ class GraphComposer
     public function createGraph()
     {
         $graph = new Graph();
+        $graph->setAttribute('graphviz.graph.rankdir', $this->rankdir);
 
         foreach ($this->dependencyGraph->getPackages() as $package) {
             $name = $package->getName();
@@ -114,6 +120,13 @@ class GraphComposer
         $graph = $this->createGraph();
 
         return $this->graphviz->createImageFile($graph);
+    }
+
+    public function setRankdir($rankdir)
+    {
+        $this->rankdir = $rankdir;
+
+        return $this;
     }
 
     public function setFormat($format)
