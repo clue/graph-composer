@@ -5,15 +5,16 @@ dist: trusty
 
 matrix:
   include:
+    - php: 7.2
     - php: 7.3
     - php: 7.4
     - php: 8.0
       dist: bionic
     - name: "Build phar"
-      php: 7.3
+      php: 7.2
       script: composer build
     - name: "Test dependency installation"
-      php: 7.3
+      php: 7.2
       install: []
       script: composer install --dry-run --working-dir=tests/install-as-dep
 

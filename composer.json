@@ -5,7 +5,7 @@
     "homepage": "https://github.com/clue/graph-composer",
     "license": "MIT",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.2 || ^8.0",
         "clue/graph": "^0.9.1",
         "graphp/graphviz": "^0.2.2",
         "jms/composer-deps-analyzer": "^1.0.1",
@@ -13,12 +13,17 @@
     },
     "require-dev": {
         "clue/phar-composer": "^1.1",
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^8"
     },
     "autoload": {
         "psr-0": { "Clue\\GraphComposer": "src/" }
     },
     "bin": [ "bin/graph-composer" ],
+    "config": {
+        "platform": {
+            "php": "7.2.34"
+        }
+    },
     "scripts": {
         "build": "@php build.php"
     }
