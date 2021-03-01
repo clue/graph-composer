@@ -3,6 +3,7 @@
 use Clue\GraphComposer\Graph\GraphComposer;
 use Graphp\GraphViz\GraphViz;
 use Fhaculty\Graph\Graph;
+use PHPUnit\Framework\TestCase;
 
 class GraphVizMockDisplay extends GraphViz
 {
@@ -31,7 +32,7 @@ class GraphVizMockSetFormat extends GraphViz
     }
 }
 
-class GraphTest extends PHPUnit_Framework_TestCase
+class GraphTest extends TestCase
 {
     public function testCreateGraph()
     {
@@ -40,8 +41,8 @@ class GraphTest extends PHPUnit_Framework_TestCase
         $graphComposer = new GraphComposer($dir);
         $graph = $graphComposer->createGraph();
 
-        $this->assertInstanceOf('Fhaculty\Graph\Graph', $graph);
-        $this->assertTrue(count($graph->getVertices()) > 0);
+        self::assertInstanceOf('Fhaculty\Graph\Graph', $graph);
+        self::assertTrue(count($graph->getVertices()) > 0);
     }
 
     public function testDisplayGraphCallsDisplayGraphViz()
@@ -54,7 +55,7 @@ class GraphTest extends PHPUnit_Framework_TestCase
         $graphComposer = new GraphComposer($dir, $graphviz);
         $graphComposer->displayGraph();
 
-        $this->assertEquals(1, $graphviz->called);
+        self::assertEquals(1, $graphviz->called);
     }
 
     public function testGetImagePathWillCreateTemporaryImageFileViaGraphViz()
@@ -67,7 +68,7 @@ class GraphTest extends PHPUnit_Framework_TestCase
         $graphComposer = new GraphComposer($dir, $graphviz);
         $ret = $graphComposer->getImagePath();
 
-        $this->assertEquals('test1.png', $ret);
+        self::assertEquals('test1.png', $ret);
     }
 
     public function testSetFormatWillSetFormatOnGraphViz()
@@ -80,7 +81,7 @@ class GraphTest extends PHPUnit_Framework_TestCase
         $graphComposer = new GraphComposer($dir, $graphviz);
         $ret = $graphComposer->setFormat('gif');
 
-        $this->assertEquals($graphComposer, $ret);
-        $this->assertEquals('gif', $graphviz->called);
+        self::assertEquals($graphComposer, $ret);
+        self::assertEquals('gif', $graphviz->called);
     }
 }
