@@ -60,5 +60,7 @@ class Export extends Command
         } else {
             readfile($path);
         }
+
+        return 0;
     }
 }
