@@ -1,4 +1,6 @@
-# clue/graph-composer [![Build Status](https://travis-ci.org/clue/graph-composer.png?branch=master)](https://travis-ci.org/clue/graph-composer)
+# clue/graph-composer
+
+[![CI status](https://github.com/clue/graph-composer/workflows/CI/badge.svg)](https://github.com/clue/graph-composer/actions)
 
 Graph visualization for your project's `composer.json` and its dependencies:
 
