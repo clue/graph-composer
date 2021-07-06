@@ -1,6 +1,8 @@
 # clue/graph-composer
 
 [![CI status](https://github.com/clue/graph-composer/workflows/CI/badge.svg)](https://github.com/clue/graph-composer/actions)
+[![downloads on GitHub](https://img.shields.io/github/downloads/clue/graph-composer/total?color=blue&label=downloads%20on%20GitHub)](https://github.com/clue/graph-composer/releases)
+[![installs on Packagist](https://img.shields.io/packagist/dt/clue/graph-composer?color=blue&label=installs%20on%20Packagist)](https://packagist.org/packages/clue/graph-composer)
 
 Graph visualization for your project's `composer.json` and its dependencies:
 
