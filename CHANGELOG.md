@@ -1,5 +1,19 @@
 # Changelog
 
+## ?.?.? (unreleased)
+
+* Dev dependencies are only rendered for the root package
+
+* Added new options to filter packages and dependencies:
+    * `--no-dev` will hide dev dependencies
+    * `--no-php` will hide the constraints regarding the PHP version
+    * `--no-ext` will hide PHP extensions
+    * `--depth` will limit the depth of the generated graph
+    * `--exclude-regex` allows to apply regular expressions to hide packages
+    * `--only-regex` show only packages with their name matching the expression
+    * `--exclude-type` exclude pacakges with given type
+    * `--only-type` only show packages of given type
+
 ## 1.1.0 (2020-03-26)
 
 *   Feature: Forward compatibility with symfony/console v5, v4, v3 and legacy v2.
@@ -17,6 +31,7 @@
 *   Improve test suite by adding PHPUnit to `require-dev`,
     support legacy PHP 5.3 through PHP 7.4 and legacy HHVM and simplify test matrix.
     (#42 and #51 by @clue)
+
 
 ## 1.0.0 (2015-11-17)
 
