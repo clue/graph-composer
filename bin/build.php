@@ -15,11 +15,12 @@ $out = isset($argv[1]) ? $argv[1] : ('graph-composer-' . $version . '.phar');
 
 passthru('
 rm -rf build && mkdir build &&
-cp -r bin/ src/ composer.json composer.lock LICENSE build/ &&
+cp -r bin/ src/ composer.json LICENSE build/ &&
 sed -i \'s/@dev/' . $version .'/g\' build/src/Clue/GraphComposer/App.php &&
+composer config -d build/ platform.php 5.3.6 &&
 composer install -d build/ --no-dev &&
 
-cd build/ && rm -rf composer.lock vendor/*/*/tests/ vendor/*/*/examples/ vendor/*/*/*.md vendor/*/*/composer.* vendor/*/*/phpunit.* vendor/*/*/.gitignore vendor/*/*/.travis.yml && cd .. &&
+cd build/ && rm -rf bin/build.php vendor/*/*/tests/ vendor/*/*/examples/ vendor/*/*/*.md vendor/*/*/composer.* vendor/*/*/phpunit.* vendor/*/*/.gitignore vendor/*/*/.travis.yml && cd .. &&
 cd build/vendor/symfony/console/Symfony/Component/Console/ && rm -rf Tests/ *.md composer.* phpunit.* .gitignore && cd - &&
 vendor/bin/phar-composer build build/ ' . escapeshellarg($out) . ' &&
 

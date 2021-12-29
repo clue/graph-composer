@@ -28,6 +28,7 @@ jobs:
           coverage: xdebug
       - run: composer install
       - run: vendor/bin/phpunit --coverage-text
+      - run: composer build
 
   PHPUnit-hhvm:
     name: PHPUnit (HHVM)
@@ -40,18 +41,6 @@ jobs:
           version: lts-3.30
       - run: hhvm $(which composer) install
       - run: hhvm vendor/bin/phpunit
-
-  Build-phar:
-    name: Build phar
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.2'
-          tools: composer:v1
-      - run: composer install
-      - run: composer build
 
   Test-dependency-installation:
     name: Test dependency installation
