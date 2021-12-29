@@ -1,6 +1,6 @@
 /.gitattributes export-ignore
-/.github/workflows export-ignore
+/.github/workflows/ export-ignore
 /.gitignore export-ignore
-/examples/ export-ignore
+/bin/build.php export-ignore
 /phpunit.xml.dist export-ignore
 /tests/ export-ignore

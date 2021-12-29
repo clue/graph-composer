@@ -19,12 +19,7 @@
         "psr-0": { "Clue\\GraphComposer": "src/" }
     },
     "bin": [ "bin/graph-composer" ],
-    "config": {
-        "platform": {
-            "php": "5.3.6"
-        }
-    },
     "scripts": {
-        "build": "@php build.php"
+        "build": "@php bin/build.php"
     }
 }
