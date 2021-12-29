@@ -1,8 +1,9 @@
 <?php
 
 use Clue\GraphComposer\Graph\GraphComposer;
-use Graphp\GraphViz\GraphViz;
 use Fhaculty\Graph\Graph;
+use Graphp\GraphViz\GraphViz;
+use PHPUnit\Framework\TestCase;
 
 class GraphVizMockDisplay extends GraphViz
 {
@@ -31,7 +32,7 @@ class GraphVizMockSetFormat extends GraphViz
     }
 }
 
-class GraphTest extends PHPUnit_Framework_TestCase
+class GraphTest extends TestCase
 {
     public function testCreateGraph()
     {
