@@ -16,7 +16,7 @@
         "phpunit/phpunit": "^9.5 || ^5.7 || ^4.8.36"
     },
     "autoload": {
-        "psr-0": { "Clue\\GraphComposer": "src/" }
+        "psr-4": { "Clue\\GraphComposer\\": "src/" }
     },
     "bin": [ "bin/graph-composer" ],
     "scripts": {
