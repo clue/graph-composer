@@ -16,7 +16,7 @@ $out = isset($argv[1]) ? $argv[1] : ('graph-composer-' . $version . '.phar');
 passthru('
 rm -rf build && mkdir build &&
 cp -r bin/ src/ composer.json LICENSE build/ &&
-sed -i \'s/@dev/' . $version .'/g\' build/src/Clue/GraphComposer/App.php &&
+sed -i \'s/@dev/' . $version .'/g\' build/src/App.php &&
 composer config -d build/ platform.php 5.3.6 &&
 composer install -d build/ --no-dev &&
 
