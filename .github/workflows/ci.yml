@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         php:
+          - 8.0
           - 7.4
           - 7.3
           - 7.2
@@ -32,6 +33,15 @@ jobs:
       - run: vendor/bin/phpunit --coverage-text -c phpunit.xml.legacy
         if: ${{ matrix.php < 7.3 }}
       - run: composer build
+      - run: composer require symfony/console:^6.0 --dry-run --working-dir=tests/install-as-dep
+        if: ${{ matrix.php >= 8.0 }}
+      - run: composer require symfony/console:^5.0 --dry-run --working-dir=tests/install-as-dep
+        if: ${{ matrix.php >= 7.2 }}
+      - run: composer require symfony/console:^4.0 --dry-run --working-dir=tests/install-as-dep
+        if: ${{ matrix.php >= 7.1 && matrix.php < 8.0 }}
+      - run: composer require symfony/console:^3.0 --dry-run --working-dir=tests/install-as-dep
+        if: ${{ matrix.php >= 5.5 && matrix.php < 8.0 }}
+      - run: composer install --dry-run --working-dir=tests/install-as-dep
 
   PHPUnit-hhvm:
     name: PHPUnit (HHVM)
@@ -44,13 +54,4 @@ jobs:
           version: lts-3.30
       - run: hhvm $(which composer) install
       - run: hhvm vendor/bin/phpunit
-
-  Test-dependency-installation:
-    name: Test dependency installation
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.2'
-      - run: composer install --dry-run --working-dir=tests/install-as-dep
+      - run: hhvm $(which composer) install --dry-run --working-dir=tests/install-as-dep
