@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- PHPUnit configuration file with new format for PHPUnit 9.5+ -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          cacheResult="false"
@@ -17,4 +17,7 @@
             <directory>./src/</directory>
         </include>
     </coverage>
+    <php>
+        <ini name="error_reporting" value="-1" />
+    </php>
 </phpunit>
