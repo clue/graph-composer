@@ -74,9 +74,8 @@ $ php graph-composer.phar export ~/path/to/your/project
 You can grab a copy of clue/graph-composer in either of the following ways.
 
 This project aims to run on any platform and thus does not require any PHP
-extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
-HHVM.
-It's *highly recommended to use PHP 7+* for this project.
+extensions and supports running on legacy PHP 5.3 through current PHP 8+.
+It's *highly recommended to use the latest supported PHP version* for this project.
 
 The graph drawing feature is powered by the excellent [GraphViz](https://www.graphviz.org)
 software. This means you'll have to install GraphViz (`dot` executable).
