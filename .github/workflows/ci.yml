@@ -43,16 +43,3 @@ jobs:
       - run: composer require symfony/console:^3.0 --dry-run --working-dir=tests/install-as-dep
         if: ${{ matrix.php >= 5.5 && matrix.php < 8.0 }}
       - run: composer install --dry-run --working-dir=tests/install-as-dep
-
-  PHPUnit-hhvm:
-    name: PHPUnit (HHVM)
-    runs-on: ubuntu-18.04
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v2
-      - uses: azjezz/setup-hhvm@v1
-        with:
-          version: lts-3.30
-      - run: hhvm $(which composer) install
-      - run: hhvm vendor/bin/phpunit
-      - run: hhvm $(which composer) install --dry-run --working-dir=tests/install-as-dep
