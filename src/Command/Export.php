@@ -21,6 +21,9 @@ class Export extends Command
              // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)'/*, 'svg'*/)
 
+            // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
+            ->addOption('vendors', null, InputOption::VALUE_REQUIRED, 'List of Vendor names to be displayed on the graph, separated by comma'/*, 'svg'*/)
+
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
 
@@ -47,7 +50,9 @@ class Export extends Command
             $graph->setFormat($format);
         }
 
-        $path = $graph->getImagePath();
+        $vendors = $input->getOption('vendors');
+
+        $path = $graph->getImagePath(array('vendors' => $vendors));
 
         if ($target !== null) {
             rename($path, $target);
