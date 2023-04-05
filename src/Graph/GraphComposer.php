@@ -56,13 +56,20 @@ class GraphComposer
     /**
      *
      * @param string $dir
+     * @param array $filters
      * @return \Fhaculty\Graph\Graph
      */
-    public function createGraph()
+    public function createGraph($filters = array())
     {
         $graph = new Graph();
 
+        $vendors = isset($filters['vendors']) ? explode(',', $filters['vendors']) : null;
+
+        /** @var \JMS\Composer\Graph\PackageNode $package */
         foreach ($this->dependencyGraph->getPackages() as $package) {
+
+            if ($this->filterByVendors($package->getName(), $vendors)) continue;
+
             $name = $package->getName();
             $start = $graph->createVertex($name, true);
 
@@ -75,6 +82,7 @@ class GraphComposer
 
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
+                if ($this->filterByVendors($targetName, $vendors)) continue;
                 $target = $graph->createVertex($targetName, true);
 
                 $label = $requires->getVersionConstraint();
@@ -109,9 +117,9 @@ class GraphComposer
         $this->graphviz->display($graph);
     }
 
-    public function getImagePath()
+    public function getImagePath($filters = array())
     {
-        $graph = $this->createGraph();
+        $graph = $this->createGraph($filters);
 
         return $this->graphviz->createImageFile($graph);
     }
@@ -121,5 +129,21 @@ class GraphComposer
         $this->graphviz->setFormat($format);
 
         return $this;
+    }
+
+    protected function filterByVendors($packageName, array $vendors = null)
+    {
+        if (strpos($packageName, '/') !== false) {
+            $vendorName = strstr($packageName, '/', true);
+        } else {
+            // if the package name has "/" in it, everything before "/" should be considered as vendor,
+            // if not - the whole name should be considered as vendor.
+            $vendorName = $packageName;
+        }
+
+        if (!is_null($vendors) && !in_array($vendorName, $vendors)) {
+            return true;
+        }
+        return false;
     }
 }
