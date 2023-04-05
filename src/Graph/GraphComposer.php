@@ -68,7 +68,7 @@ class GraphComposer
         /** @var \JMS\Composer\Graph\PackageNode $package */
         foreach ($this->dependencyGraph->getPackages() as $package) {
 
-            if ($this->filterByVendors($package, $vendors)) continue;
+            if ($this->filterByVendors($package->getName(), $vendors)) continue;
 
             $name = $package->getName();
             $start = $graph->createVertex($name, true);
@@ -82,6 +82,7 @@ class GraphComposer
 
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
+                if ($this->filterByVendors($targetName, $vendors)) continue;
                 $target = $graph->createVertex($targetName, true);
 
                 $label = $requires->getVersionConstraint();
@@ -130,10 +131,8 @@ class GraphComposer
         return $this;
     }
 
-    protected function filterByVendors(\JMS\Composer\Graph\PackageNode $package, array $vendors = null)
+    protected function filterByVendors($packageName, array $vendors = null)
     {
-        $packageName = $package->getName();
-
         if (strpos($packageName, '/') !== false) {
             $vendorName = strstr($packageName, '/', true);
         } else {
