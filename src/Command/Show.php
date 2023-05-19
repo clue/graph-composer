@@ -17,14 +17,17 @@ class Show extends Command
              ->setDescription('Show dependency graph image for given project directory')
              ->addArgument('dir', InputArgument::OPTIONAL, 'Path to project directory to scan', '.')
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)', 'svg')
+             ->addOption('filter', null, InputOption::VALUE_OPTIONAL, 'Filter packages by keywork')
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $filter = $input->getOptions('filter');
+
         $graph = new GraphComposer($input->getArgument('dir'));
         $graph->setFormat($input->getOption('format'));
-        $graph->displayGraph();
+        $graph->displayGraph($filter);
 
         return 0;
     }

@@ -55,10 +55,11 @@ class GraphComposer
 
     /**
      *
+     * @param string|null $filter
      * @param string $dir
      * @return \Fhaculty\Graph\Graph
      */
-    public function createGraph()
+    public function createGraph($filter = null)
     {
         $graph = new Graph();
 
@@ -75,6 +76,14 @@ class GraphComposer
 
             foreach ($package->getOutEdges() as $requires) {
                 $targetName = $requires->getDestPackage()->getName();
+
+                if (
+                    $filter
+                    && false === preg_match('/' . preg_quote($filter, null) . '/', $targetName)
+                ) {
+                    continue;
+                }
+
                 $target = $graph->createVertex($targetName, true);
 
                 $label = $requires->getVersionConstraint();
@@ -102,16 +111,16 @@ class GraphComposer
         return $entity;
     }
 
-    public function displayGraph()
+    public function displayGraph($filter)
     {
-        $graph = $this->createGraph();
+        $graph = $this->createGraph($filter);
 
         $this->graphviz->display($graph);
     }
 
-    public function getImagePath()
+    public function getImagePath($filter)
     {
-        $graph = $this->createGraph();
+        $graph = $this->createGraph($filter);
 
         return $this->graphviz->createImageFile($graph);
     }

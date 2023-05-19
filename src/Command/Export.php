@@ -20,6 +20,7 @@ class Export extends Command
 
              // add output format option. default value MUST NOT be given, because default is to overwrite with output extension
              ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Image format (svg, png, jpeg)'/*, 'svg'*/)
+             ->addOption('filter', null, InputOption::VALUE_OPTIONAL, 'Filter packages by keywork')
 
            /*->addOption('dev', null, InputOption::VALUE_NONE, 'If set, Whether require-dev dependencies should be shown') */;
     }
@@ -29,6 +30,8 @@ class Export extends Command
         $graph = new GraphComposer($input->getArgument('dir'));
 
         $target = $input->getArgument('output');
+        $filter = $input->getOptions('filter');
+
         if ($target !== null) {
             if (is_dir($target)) {
                 $target = rtrim($target, '/') . '/graph-composer.svg';
@@ -47,7 +50,7 @@ class Export extends Command
             $graph->setFormat($format);
         }
 
-        $path = $graph->getImagePath();
+        $path = $graph->getImagePath($filter);
 
         if ($target !== null) {
             rename($path, $target);
